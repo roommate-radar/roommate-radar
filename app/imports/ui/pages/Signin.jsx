@@ -51,13 +51,13 @@ export default class Signin extends React.Component {
             <Form onSubmit={this.submit}>
               <Segment stacked>
                 <Form.Input
-                  label="Email"
+                  label="Username or Email"
                   id="signin-form-email"
                   icon="user"
                   iconPosition="left"
-                  name="email"
+                  name="username"
                   type="username"
-                  placeholder="E-mail address"
+                  placeholder="Username or E-mail address"
                   onChange={this.handleChange}
                 />
                 <Form.Input
