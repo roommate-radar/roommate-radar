@@ -7,13 +7,13 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import NavBar from '../components/NavBar';
 import Landing from '../pages/Landing';
 import ListProfile from '../pages/ListProfile';
-import ListStuffAdmin from '../pages/ListStuffAdmin';
 import CreateProfile from '../pages/CreateProfile';
 import EditProfile from '../pages/EditProfile';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
+import UserProfilePage from '../pages/UserProfilePage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -30,7 +30,7 @@ class App extends React.Component {
             <ProtectedRoute path="/list" component={ListProfile}/>
             <ProtectedRoute path="/add" component={CreateProfile}/>
             <ProtectedRoute path="/edit/:_id" component={EditProfile}/>
-            <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
+            <Route path="/profile/:_id" component={UserProfilePage}/>
             <Route component={NotFound}/>
           </Switch>
         </div>
