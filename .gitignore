@@ -1,5 +1,4 @@
 .idea
 *.iml
 node_modules
-app/.deploy/mup.js
-app/.deploy/settings.json
+.deploy
