@@ -5,29 +5,28 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { Stuffs } from '../../api/stuff/Stuff';
+import { Profiles } from '../../api/profile/Profile';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  name: String,
-  quantity: Number,
-  condition: {
-    type: String,
-    allowedValues: ['excellent', 'good', 'fair', 'poor'],
-    defaultValue: 'good',
-  },
+  firstName: String,
+  lastName: String,
+  image: String,
+  major: String,
+  year: Number,
+  description: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
-class AddStuff extends React.Component {
+class CreateProfile extends React.Component {
 
   // On submit, insert the data.
   submit(data, formRef) {
-    const { name, quantity, condition } = data;
+    const { firstName, lastName, image, major, year, description } = data;
     const owner = Meteor.user().username;
-    Stuffs.collection.insert({ name, quantity, condition, owner },
+    Profiles.collection.insert({ firstName, lastName, image, major, year, description, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -44,10 +43,12 @@ class AddStuff extends React.Component {
     return (
       <Grid container centered>
         <Grid.Column>
-          <Header as="h2" textAlign="center">Add Stuff</Header>
+          <Header as="h2" textAlign="center">Add Profile</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
-              <TextField name='name'/>
+              <TextField name='firstName'/>
+              <TextField name='lastName'/>
+              <TextField name='image'/>
               <NumField name='quantity' decimal={false}/>
               <SelectField name='condition'/>
               <SubmitField value='Submit'/>
@@ -60,4 +61,4 @@ class AddStuff extends React.Component {
   }
 }
 
-export default AddStuff;
+export default CreateProfile;
