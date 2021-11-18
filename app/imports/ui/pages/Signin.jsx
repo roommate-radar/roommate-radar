@@ -55,8 +55,8 @@ export default class Signin extends React.Component {
                   id="signin-form-username"
                   icon="user"
                   iconPosition="left"
-                  name="username"
-                  type="username"
+                  name="email"
+                  type="email"
                   placeholder="Username or E-mail address"
                   onChange={this.handleChange}
                 />
