@@ -11,7 +11,7 @@ class Signup extends React.Component {
   /* Initialize state fields. */
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '', error: '', redirectToReferer: false };
+    this.state = { username: '', email: '', password: '', error: '', redirectToReferer: false };
   }
 
   /* Update the form controls each time the user interacts with them. */
@@ -21,14 +21,19 @@ class Signup extends React.Component {
 
   /* Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit = () => {
-    const { email, password } = this.state;
-    Accounts.createUser({ email, username: email, password }, (err) => {
-      if (err) {
-        this.setState({ error: err.reason });
-      } else {
-        this.setState({ error: '', redirectToReferer: true });
-      }
-    });
+    const { email, username, password } = this.state;
+    const x = email.search('@hawaii.edu');
+    if (x > -1) {
+      Accounts.createUser({ email, username: username, password }, (err) => {
+        if (err) {
+          this.setState({ error: err.reason });
+        } else {
+          this.setState({ error: '', redirectToReferer: true });
+        }
+      });
+    } else {
+      this.setState({ error: 'Not a @hawaii.edu account' });
+    }
   }
 
   /* Display the signup form. Redirect to add page after successful registration and login. */
@@ -48,9 +53,19 @@ class Signup extends React.Component {
             <Form onSubmit={this.submit}>
               <Segment stacked>
                 <Form.Input
+                  label="UserName"
+                  id="signin-form-username"
+                  icon="user"
+                  iconPosition="left"
+                  name="username"
+                  type="username"
+                  placeholder="Username"
+                  onChange={this.handleChange}
+                />
+                <Form.Input
                   label="Email"
                   id="signup-form-email"
-                  icon="user"
+                  icon="mail"
                   iconPosition="left"
                   name="email"
                   type="email"
