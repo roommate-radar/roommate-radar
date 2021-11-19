@@ -47,7 +47,7 @@ class Signup extends React.Component {
       <Container id="signup-page">
         <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
           <Grid.Column>
-            <Header as="h2" textAlign="center">
+            <Header inverted as="h2" textAlign="center">
               Register your account
             </Header>
             <Form onSubmit={this.submit}>
@@ -86,7 +86,7 @@ class Signup extends React.Component {
               </Segment>
             </Form>
             <Message>
-              Already have an account? Login <Link to="/signin">here</Link>
+              Already have an account? Login <Link to="/signin">here</Link>!
             </Message>
             {this.state.error === '' ? (
               ''
