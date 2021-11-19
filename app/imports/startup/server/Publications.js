@@ -7,8 +7,9 @@ import { Profiles } from '../../api/profiles/Profiles';
 
 Meteor.publish(Profiles.userPublicationName, function () {
   if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Profiles.collection.find({ owner: username });
+    /* const username = Meteor.users.findOne(this.userId).username; */
+    /* return Profiles.collection.find({ owner: username }); */
+    return Profiles.collection.find();
   }
   return this.ready();
 });

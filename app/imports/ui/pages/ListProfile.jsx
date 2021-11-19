@@ -18,9 +18,9 @@ class ListProfile extends React.Component {
   renderPage() {
     return (
       <Container>
-        <Header as="h2" textAlign="center">List Profile</Header>
+        <Header inverted as="h2" textAlign="center">List Profile</Header>
         <Card.Group centered>
-          {this.props.profiles.map((profile, index) => <Profile key={index} contact={profile}/>)}
+          {this.props.profiles.map((profile, index) => <Profile key={index} profile={profile}/>)}
         </Card.Group>
       </Container>
     );

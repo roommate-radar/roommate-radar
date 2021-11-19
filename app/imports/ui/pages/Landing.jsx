@@ -31,7 +31,7 @@ class Landing extends React.Component {
 
           <Grid.Row columns={1} centered>
             <Grid.Column verticalAlign='middle'>
-              <Header inverted as='h4'>To continue, please <Link to='/'>log in</Link>. Don&apos;t have an account with us? Register <Link to='/'>here</Link></Header>
+              <Header inverted as='h4'>To continue, please <Link to='/signin'>log in</Link>. Don&apos;t have an account with us? Register <Link to='/signup'>here</Link></Header>
             </Grid.Column>
           </Grid.Row>
         </Grid>

@@ -43,7 +43,7 @@ class CreateProfile extends React.Component {
     return (
       <Grid container centered>
         <Grid.Column>
-          <Header as="h2" textAlign="center">Create Profile</Header>
+          <Header inverted as="h2" textAlign="center">Create Profile</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
               <TextField name='firstName'/>
