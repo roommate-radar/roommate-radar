@@ -32,7 +32,7 @@ UserProfilePage.propTypes = {
 /** withTracker connects Meteor data to React components. */
 export default withTracker(() => {
   // Ensure access to User's profile page
-  const subscription = Meteor.subscribe('ProfilesCollection');
+  const subscription = Meteor.subscribe(Profiles.userPublicationName);
   // Get the Profiles collection
   const profiles = Profiles.collection.find({}).fetch();
   // Determine if the subscription is ready
