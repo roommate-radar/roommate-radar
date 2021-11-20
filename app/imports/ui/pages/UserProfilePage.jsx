@@ -30,11 +30,14 @@ UserProfilePage.propTypes = {
 };
 
 /** withTracker connects Meteor data to React components. */
-export default withTracker(() => {
+export default withTracker(({ match }) => {
+  const currentProfile = match.params._id;
   // Ensure access to User's profile page
   const subscription = Meteor.subscribe(Profiles.userPublicationName);
+  // Tester
+  // console.log(currentProfile);
   // Get the Profiles collection
-  const profiles = Profiles.collection.find({}).fetch();
+  const profiles = Profiles.collection.find({ _id: currentProfile }).fetch();
   // Determine if the subscription is ready
   const ready = subscription.ready();
   return {
