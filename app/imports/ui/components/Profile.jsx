@@ -3,12 +3,18 @@ import { Card, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
+// function getUsersProfile(param1) {
+//   const data = Profiles.collection.find({}).fetch();
+//   const getUserName = _.pluck(data.filter(datas => datas._id === param1), 'owner');
+//   return getUserName;
+// }
+
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Profile extends React.Component {
   render() {
     const prop = this.props.profile;
     return (
-      <Card href={`#/profile/${prop._id}`}>
+      <Card href={`#/profile/${prop.owner}`}>
         <Image src={prop.image} wrapped ui={false} />
         <Card.Content>
           <Card.Header>{prop.lastName}, {prop.firstName}</Card.Header>
