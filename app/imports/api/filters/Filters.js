@@ -5,32 +5,33 @@ import { Tracker } from 'meteor/tracker';
 /**
  * The ProfilesCollection. It encapsulates state and variable values for profiles.
  */
-class ProfilesCollection {
+class FiltersCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'ProfilesCollection';
+    this.name = 'FiltersCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      firstName: String,
-      lastName: String,
-      image: String,
-      gender: String,
-      major: String,
-      year: Number,
-      description: String,
-      owner: String,
+      rent: Object,
+      'rent.min': Number,
+      'rent.max': Number,
+      location: Array,
+      'location.$': String,
+      /* figure out what's happening with this: blacklist or whitelist? */
+      /* if whitelist, how do you default to displaying all locations? */
+      /* for now, just treating it as a blacklist. */
+      gender: Array,
+      'gender.$': String,
       pets: Object,
       'pets.blacklist': Array,
       'pets.blacklist.$': String,
       'pets.whitelist': Array,
       'pets.whitelist.$': String,
-      location: Array,
-      'location.$': String,
-      rent: Object,
-      'rent.min': Number,
-      'rent.max': Number,
+      year: Object,
+      'year.min': Number,
+      'year.max': Number,
+      owner: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
@@ -42,6 +43,6 @@ class ProfilesCollection {
 
 /**
  * The singleton instance of the ProfilesCollection.
- * @type {ProfilesCollection}
+ * @type {FiltersCollection}
  */
-export const Profiles = new ProfilesCollection();
+export const Filters = new FiltersCollection();

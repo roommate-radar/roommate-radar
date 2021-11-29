@@ -4,6 +4,7 @@ import { Container, Header, Loader, Card } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Profiles } from '../../api/profiles/Profiles';
+import { Filters } from '../../api/filters/Filters';
 import Profile from '../components/Profile';
 
 /** Renders a table containing all of the Profile documents. Use <ProfileItem> to render each row. */
@@ -36,11 +37,22 @@ ListProfile.propTypes = {
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Profile documents.
-  const subscription = Meteor.subscribe(Profiles.userPublicationName);
+  const profilesSubscription = Meteor.subscribe(Profiles.userPublicationName);
+  const filtersSubscription = Meteor.subscribe(Filters.userPublicationName);
   // Determine if the subscription is ready
-  const ready = subscription.ready();
-  // Get the Profile documents
-  const profiles = Profiles.collection.find({}).fetch();
+  const ready = profilesSubscription.ready() && filtersSubscription.ready();
+  // Get the user's filter document
+  const filter = Filters.collection.findOne({}).fetch();
+  // Get the Profile documents matching the user's filter
+  const profiles = Profiles.collection.find({
+    rent: { gte: filter.rent.min, lte: filter.rent.max },
+    /* location: { $nin: filter.location }, */
+    gender: { $in: filter.gender },
+    /* 'pets.blacklist': { $nin: { filter.pets.whitelist }}, */
+    /* 'pets.whitelist': { $nin: { filter.pets.blacklist }}, */
+    year: { gte: filter.year.min, lte: filter.year.max },
+    owner: { $ne: Meteor.user().username },
+  }).fetch();
   return {
     profiles,
     ready,

@@ -6,6 +6,7 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Profiles } from '../../api/profiles/Profiles';
+import { Filters } from '../../api/filters/Filters';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -21,7 +22,6 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
 class CreateProfile extends React.Component {
-
   // On submit, insert the data.
   submit(data, formRef) {
     const { firstName, lastName, image, major, year, description } = data;
@@ -35,6 +35,15 @@ class CreateProfile extends React.Component {
           formRef.reset();
         }
       });
+    const defaultFilter = {
+      rent: { min: 0, max: Infinity },
+      location: [],
+      gender: [],
+      pets: [],
+      expectedGrad: { min: 0, max: Infinity },
+      owner: owner,
+    };
+    Filters.collection.insert(defaultFilter);
   }
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms

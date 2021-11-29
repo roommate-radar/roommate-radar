@@ -32,7 +32,7 @@ class Signup extends React.Component {
         }
       });
     } else {
-      this.setState({ error: 'Not a @hawaii.edu account' });
+      this.setState({ error: 'Not an @hawaii.edu account' });
     }
   }
 
