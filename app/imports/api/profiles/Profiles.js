@@ -20,7 +20,6 @@ class ProfilesCollection {
       major: String,
       year: Number,
       description: String,
-      owner: String,
       pets: Object,
       'pets.blacklist': Array,
       'pets.blacklist.$': String,
@@ -31,6 +30,7 @@ class ProfilesCollection {
       rent: Object,
       'rent.min': Number,
       'rent.max': Number,
+      owner: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);

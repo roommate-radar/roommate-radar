@@ -42,16 +42,17 @@ export default withTracker(() => {
   // Determine if the subscription is ready
   const ready = profilesSubscription.ready() && filtersSubscription.ready();
   // Get the user's filter document
-  const filter = Filters.collection.findOne({}).fetch();
+  /* const filter = Filters.collection.findOne({}); */
+
   // Get the Profile documents matching the user's filter
   const profiles = Profiles.collection.find({
-    rent: { gte: filter.rent.min, lte: filter.rent.max },
+    /* rent: { $gte: filter.rent.min, $lte: filter.rent.max }, */
     /* location: { $nin: filter.location }, */
-    gender: { $in: filter.gender },
+    /* gender: { $in: filter.gender }, */
     /* 'pets.blacklist': { $nin: { filter.pets.whitelist }}, */
     /* 'pets.whitelist': { $nin: { filter.pets.blacklist }}, */
-    year: { gte: filter.year.min, lte: filter.year.max },
-    owner: { $ne: Meteor.user().username },
+    /* year: { $gte: filter.year.min, $lte: filter.year.max }, */
+    /* owner: { $ne: Meteor.user().username }, */
   }).fetch();
   return {
     profiles,
