@@ -13,6 +13,7 @@ class ProfilesCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
+      username: String,
       firstName: String,
       lastName: String,
       image: String,
@@ -25,8 +26,6 @@ class ProfilesCollection {
       'pets.blacklist.$': String,
       'pets.whitelist': Array,
       'pets.whitelist.$': String,
-      location: Array,
-      'location.$': String,
       rent: Object,
       'rent.min': Number,
       'rent.max': Number,

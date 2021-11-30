@@ -16,11 +16,6 @@ class FiltersCollection {
       rent: Object,
       'rent.min': Number,
       'rent.max': Number,
-      location: Array,
-      'location.$': String,
-      /* figure out what's happening with this: blacklist or whitelist? */
-      /* if whitelist, how do you default to displaying all locations? */
-      /* for now, just treating it as a blacklist. */
       gender: Array,
       'gender.$': String,
       pets: Object,
