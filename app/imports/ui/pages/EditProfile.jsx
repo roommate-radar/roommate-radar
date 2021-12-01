@@ -1,48 +1,105 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
-import swal from 'sweetalert';
-import { AutoForm, ErrorsField, HiddenField, NumField, LongTextField, SubmitField, TextField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
-import { withTracker } from 'meteor/react-meteor-data';
+import { Loader, Grid, Header, Form, Segment } from 'semantic-ui-react';
+import { AutoForm, HiddenField, LongTextField, NumField, SubmitField, TextField } from 'uniforms-semantic';
+import swal from 'sweetalert';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import SimpleSchema from 'simpl-schema';
+import { _ } from 'meteor/underscore';
+import { withTracker } from 'meteor/react-meteor-data';
 import { Profiles } from '../../api/profiles/Profiles';
+import { Filters } from '../../api/filters/Filters';
+// import updateProfileMethod from '../../startup/both/Methods';
 
-const bridge = new SimpleSchema2Bridge(Profiles.schema);
+/** Create a schema to specify the structure of the data to appear in the form. */
+const makeSchema = () => new SimpleSchema({
+  username: { type: String, label: 'Username', optional: true },
+  firstName: { type: String, label: 'First', optional: true },
+  lastName: { type: String, label: 'Last', optional: true },
+  image: { type: String, label: 'Image URL', optional: true },
+  gender: { type: String, label: 'Gender', optional: true },
+  major: { type: String, label: 'Major', optional: true },
+  year: { type: Number, label: 'Year', optional: true },
+  description: { type: String, label: 'Description', optional: true },
+  pets: { type: Object, label: 'Pets', optional: true },
+  'pets.blacklist': { type: Array, blackbox: true },
+  'pets.blacklist.$': { type: String, blackbox: true },
+  'pets.whitelist': { type: Array, blackbox: true },
+  'pets.whitelist.$': { type: String, blackbox: true },
+  rent: { type: Object, label: 'Rent', optional: true },
+  'rent.min': Number, 'rent.max': Number,
+});
 
-/** Renders the Page for editing a single document. */
+/** Renders the Edit Page. */
 class EditProfile extends React.Component {
 
-  // On successful submit, insert the data.
+  constructor(props) {
+    super(props);
+    this.state = { redirectToReferer: false };
+  }
+
   submit(data) {
-    const { firstName, lastName, image, major, year, description, _id } = data;
-    Profiles.collection.update(_id, { $set: { firstName, lastName, image, major, year, description } }, (error) => (error ?
-      swal('Error', error.message, 'error') :
-      swal('Success', 'Item updated successfully', 'success')));
+    const { firstName, lastName, address, image, gender, major, year, description, pets, rent, owner, username, _id } = data;
+    Profiles.collection.update(_id, { $set: { _id, firstName, lastName, address, image, gender, major, year, description, pets, rent, owner, username } }, data, (error) => {
+      if (error) {
+        swal('Error', error.message, 'error');
+      } else {
+        swal('Success', 'Profile updated successfuly', 'success');
+        this.setState({ redirectToReferer: true });
+      }
+    });
   }
 
-  // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+    return (this.props.ready) ? this.renderPage() : <Loader active>Getting Data</Loader>;
   }
 
-  // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   renderPage() {
+    const email = Meteor.user().username;
+    console.log(email);
+
+    const { from } = this.props.location.state || { from: { pathname: `/profile/${email}` } };
+    if (this.state.redirectToReferer) {
+      return <Redirect to={from}/>;
+    }
+
+
+    const formSchema = makeSchema();
+    const bridge = new SimpleSchema2Bridge(formSchema);
+    const profile = Profiles.collection.findOne({ username: email });
+    console.log(profile);
+    const model = _.extend({}, profile);
+    console.log({ model });
     return (
       <Grid container centered>
         <Grid.Column>
-          <Header as="h2" textAlign="center">Edit Profile</Header>
-          <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
+          <Header as='h2' textAlign='center'>Edit My Profile</Header>
+          <AutoForm model={model} schema={bridge} onSubmit={data => this.submit(data)}>
             <Segment>
-              <TextField name='firstName'/>
-              <TextField name='lastName'/>
-              <TextField name='image'/>
-              <TextField name='major'/>
-              <NumField name='year'/>
-              <LongTextField name='description'/>
-              <SubmitField value='Submit'/>
-              <ErrorsField/>
-              <HiddenField name='owner'/>
+              <Form.Group width={'equal'}>
+                <TextField id='firstName' name='firstName' showInlineError={true} placeholder={'First Name'}/>
+                <TextField id='lastName' name='lastName' showInlineError={true} placeholder={'Last Name'}/>
+                <TextField id='major' name='major' showInlineError={true} placeholder={'Major'}/>
+              </Form.Group>
+              <Form.Group>
+                <NumField id='year' name='year' showInlineError={true} placeholder={'Year'}/>
+                <TextField id='image' name='image' showInlineError={true} placeholder={'Image URL'}/>
+              </Form.Group>
+              <Form.Group>
+                <TextField id='pets' name='pets.blacklist.$' showInlineError={true} placeholder={'Pets'}/>
+                <TextField id='pets' name='pets.whitelist.$' showInlineError={true} placeholder={'Pets'}/>
+              </Form.Group>
+              <Form.Group>
+                <NumField id='rent' name='rent.min' showInlineError={true} placeholder={'Rent'}/>
+                <NumField id='rent' name='rent.max' showInlineError={true} placeholder={'Rent'}/>
+              </Form.Group>
+              <Form.Group>
+                <LongTextField id='description' name='description' showInlineError={true} placeholder={'Description'}/>
+              </Form.Group>
+              <SubmitField value='Update'/>
+              <HiddenField name='username'/>
             </Segment>
           </AutoForm>
         </Grid.Column>
@@ -51,25 +108,19 @@ class EditProfile extends React.Component {
   }
 }
 
-// Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use.
 EditProfile.propTypes = {
-  doc: PropTypes.object,
-  model: PropTypes.object,
+  location: PropTypes.object,
+  paramId: PropTypes.string,
   ready: PropTypes.bool.isRequired,
 };
 
-// withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(({ match }) => {
-  // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
-  const documentId = match.params._id;
-  // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Profiles.userPublicationName);
-  // Determine if the subscription is ready
-  const ready = subscription.ready();
-  // Get the document
-  const doc = Profiles.collection.findOne(documentId);
+  const paramId = match.params._id;
+  const sub1 = Meteor.subscribe(Filters.userPublicationName);
+  const sub2 = Meteor.subscribe(Profiles.userPublicationName);
+  const ready = sub1.ready() && sub2.ready();
   return {
-    doc,
+    paramId,
     ready,
   };
 })(EditProfile);

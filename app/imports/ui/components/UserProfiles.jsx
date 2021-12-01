@@ -12,7 +12,7 @@ class UserProfiles extends React.Component {
     if (param1 === Meteor.user().emails[0].address) {
       currentOwner = (
         <Button>
-          <Link to={`/edit/${this.props.profile._id}`}>
+          <Link to={`/edit/${this.props.profile.username}`}>
             Edit Profile
           </Link>
         </Button>

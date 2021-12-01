@@ -7,11 +7,11 @@ import { Container, Loader, Grid } from 'semantic-ui-react';
 import { Profiles } from '../../api/profiles/Profiles';
 import UserProfiles from '../components/UserProfiles';
 
-function getProfileId(param1) {
-  const data = Profiles.collection.find({}).fetch().filter(datas => datas.owner === param1[0]);
-  const emails = _.pluck(data, 'owner');
-  return emails[0];
-}
+// function getProfileId(param1) {
+//   const data = Profiles.collection.find({}).fetch().filter(datas => datas.username === param1[0]);
+//   const emails = _.pluck(data, 'username');
+//   return emails[0];
+// }
 
 /** Renders the selected user profile page. */
 class UserProfilePage extends React.Component {
@@ -20,9 +20,11 @@ class UserProfilePage extends React.Component {
   }
 
   renderPage() {
-    const userEmail = getProfileId(_.pluck(Meteor.user().emails, 'address'));
-    const getData = (this.props.paramId === Meteor.user().username) ? userEmail : this.props.paramId;
-    const currentUser1 = Profiles.collection.find({ owner: getData }).fetch();
+    // const userEmail = getProfileId(_.pluck(Meteor.user().username, 'username'));
+    // console.log(userss);
+    const userss = Meteor.user().username;
+    const getData = (this.props.paramId === Meteor.user().username) ? userss : this.props.paramId;
+    const currentUser1 = Profiles.collection.find({ username: getData }).fetch();
     return (
       <Container>
         <Grid>
