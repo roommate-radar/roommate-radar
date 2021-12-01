@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Header, Icon, Container } from 'semantic-ui-react';
+import { Grid, Header, Icon, Container, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 /** A simple static component to render some text for the landing page. */
@@ -10,6 +10,7 @@ class Landing extends React.Component {
         <Grid container centered columns={2}>
           <Grid.Column textAlign='center'>
             <Header inverted as='h1'>Welcome to Roommate Radar</Header>
+            <Image centered size='tiny' src="/images/rr.png"/>
             <Header inverted as='h3'> Roommate Radar has helped students find the perfect roommate since 2021.
               Designed by students for students, Roommate Radar is the perfect platform to meet others like you.</Header>
           </Grid.Column>
