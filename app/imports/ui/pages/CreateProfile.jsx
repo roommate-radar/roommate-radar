@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, LongTextField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, NumField, LongTextField, SubmitField, TextField, RadioField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -12,6 +12,7 @@ import { Filters } from '../../api/filters/Filters';
 const formSchema = new SimpleSchema({
   firstName: String,
   lastName: String,
+  gender: String,
   image: String,
   major: String,
   year: Number,
@@ -24,9 +25,11 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 class CreateProfile extends React.Component {
   // On submit, insert the data.
   submit(data, formRef) {
-    const { firstName, lastName, image, major, year, description } = data;
+    const { firstName, lastName, gender, image, major, year, description } = data;
     const owner = Meteor.user().username;
-    Profiles.collection.insert({ firstName, lastName, image, major, year, description, owner },
+    const pets = { whitelist: [], blacklist: [] }; /* TEMPORARY SOLUTION! REPLACE ME WITH A FIELD IN THE FORM */
+    const rent = { min: 0, max: Infinity }; /* TEMPORARY SOLUTION! REPLACE ME WITH A FIELD IN THE FORM */
+    Profiles.collection.insert({ firstName, lastName, image, gender, major, year, description, pets, rent, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -38,8 +41,8 @@ class CreateProfile extends React.Component {
     const defaultFilter = {
       rent: { min: 0, max: Infinity },
       gender: [],
-      pets: [],
-      expectedGrad: { min: 0, max: Infinity },
+      pets: { whitelist: [], blacklist: [] },
+      year: { min: 0, max: Infinity },
       owner: owner,
     };
     Filters.collection.insert(defaultFilter);
@@ -54,13 +57,14 @@ class CreateProfile extends React.Component {
           <Header inverted as="h2" textAlign="center">Create Profile</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
-              <TextField name='firstName'/>
-              <TextField name='lastName'/>
-              <TextField name='image'/>
-              <TextField name='major'/>
-              <NumField name='year'/>
-              <LongTextField name='description'/>
-              <SubmitField value='Submit'/>
+              <TextField name='firstName' id='createprofile-form-firstname'/>
+              <TextField name='lastName' id='createprofile-form-lastname'/>
+              <RadioField allowedValues = { ['Male', 'Female', 'Nonbinary'] } name='gender' id='createprofile-form-gender'/>
+              <TextField name='image' id='createprofile-form-image'/>
+              <TextField name='major' id='createprofile-form-major'/>
+              <NumField name='year' id='createprofile-form-year'/>
+              <LongTextField name='description' id='createprofile-form-description'/>
+              <SubmitField value='Submit' id='createprofile-form-submit'/>
               <ErrorsField/>
             </Segment>
           </AutoForm>
