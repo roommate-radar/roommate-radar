@@ -8,7 +8,6 @@ class UserProfiles extends React.Component {
 
   currentUser(param1) {
     // console.log(param1);
-    console.log(this.props.profile._id);
     let currentOwner;
     if (param1 === Meteor.user().emails[0].address) {
       currentOwner = (
