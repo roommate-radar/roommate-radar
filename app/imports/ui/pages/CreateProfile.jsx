@@ -37,7 +37,6 @@ class CreateProfile extends React.Component {
       });
     const defaultFilter = {
       rent: { min: 0, max: Infinity },
-      location: [],
       gender: [],
       pets: [],
       expectedGrad: { min: 0, max: Infinity },

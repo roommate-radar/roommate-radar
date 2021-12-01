@@ -47,7 +47,6 @@ export default withTracker(() => {
   // Get the Profile documents matching the user's filter
   const profiles = Profiles.collection.find({
     /* rent: { $gte: filter.rent.min, $lte: filter.rent.max }, */
-    /* location: { $nin: filter.location }, */
     /* gender: { $in: filter.gender }, */
     /* 'pets.blacklist': { $nin: { filter.pets.whitelist }}, */
     /* 'pets.whitelist': { $nin: { filter.pets.blacklist }}, */
