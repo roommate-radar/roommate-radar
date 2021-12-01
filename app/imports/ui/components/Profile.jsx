@@ -14,7 +14,7 @@ class Profile extends React.Component {
   render() {
     const prop = this.props.profile;
     return (
-      <Card href={`#/profile/${prop.username}`}>
+      <Card href={`#/profile/${prop.owner}`}>
         <Image src={prop.image} wrapped ui={false} />
         <Card.Content>
           <Card.Header>{prop.lastName}, {prop.firstName}</Card.Header>
