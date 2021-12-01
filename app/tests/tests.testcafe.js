@@ -67,7 +67,7 @@ test('Test that CreateProfile correctly adds a profile to the ProfilesCollection
   await signupPage.signupUser(testController, 'kittykat', 'kcat@hawaii.edu', 'changeme');
   await createprofilePage.createProfile(testController, 'Kathryn', 'Cat', 'female',
     'https://www.history.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTg0NTEzNzgyNTMyNDE2OTk5/black-cat-gettyimages-901574784.jpg',
-    'History', 2022, 'Hello!');
+    'History', '2 0 2 2', 'Hello!');
 });
 
 test('Test that EditProfile correctly updates the values of a profile in the ProfilesCollection Mongo collection', async (testController) => {

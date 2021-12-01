@@ -2,7 +2,7 @@ import { Selector } from 'testcafe';
 
 class EditProfilePage {
   constructor() {
-    this.pageId = '#profileslist-page';
+    this.pageId = '#editprofile-page';
     this.pageSelector = Selector(this.pageId);
   }
 
@@ -25,11 +25,11 @@ class EditProfilePage {
 
   async updateGender(testController, newGender) {
     if (newGender.toLowerCase() === 'male') {
-      await testController.click('#editprofile-form-gender-??????');
+      await testController.click('#editprofile-form-gender-TWFsZQ');
     } else if (newGender.toLowerCase() === 'female') {
-      await testController.click('#editprofile-form-gender-??????');
+      await testController.click('#editprofile-form-gender-RmVtYWxl');
     } else if (newGender.toLowerCase() === 'nonbinary') {
-      await testController.click('#editprofile-form-gender-??????');
+      await testController.click('editprofile-form-gender-Tm9uYmluYXJ5');
     }
   }
 
