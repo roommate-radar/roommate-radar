@@ -16,8 +16,8 @@ class NavBar extends React.Component {
           <Header inverted as='h1'>Roommate Radar</Header>
         </Menu.Item>
         {this.props.currentUser ? (
-          [<Menu.Item as={NavLink} activeClassName="active" exact to="/profiles" key='add'>Profiles</Menu.Item>,
-            <Menu.Item as={NavLink} activeClassName="active" exact to={`/profile/${this.props.currentUser}`} key='list'>My Profile</Menu.Item>]
+          [<Menu.Item as={NavLink} activeClassName="active" exact to="/profiles" key='add' id='navbar-list-profiles'>Profiles</Menu.Item>,
+            <Menu.Item as={NavLink} activeClassName="active" exact to={`/profile/${this.props.currentUser}`} key='list' id='navbar-user-profile'>My Profile</Menu.Item>]
         ) : ''}
         <Menu.Item position="right">
           {this.props.currentUser === '' ? (

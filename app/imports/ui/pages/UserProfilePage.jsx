@@ -2,33 +2,71 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { _ } from 'meteor/underscore';
-import { Container, Loader, Grid } from 'semantic-ui-react';
+import { Container, Loader, Button, Grid, Header, Image } from 'semantic-ui-react';
+import { withRouter, Link } from 'react-router-dom';
 import { Profiles } from '../../api/profiles/Profiles';
-import UserProfiles from '../components/UserProfiles';
-
-// function getProfileId(param1) {
-//   const data = Profiles.collection.find({}).fetch().filter(datas => datas.username === param1[0]);
-//   const emails = _.pluck(data, 'username');
-//   return emails[0];
-// }
 
 /** Renders the selected user profile page. */
 class UserProfilePage extends React.Component {
+
+  isLoggedInUser(profileOwner) {
+    // console.log(param1);
+    if (profileOwner === Meteor.user().username) {
+      return (
+        <Button>
+          <Link to={`/edit/${this.props.profile.owner}`} id='userprofile-editprofile'>
+            Edit Profile
+          </Link>
+        </Button>
+      );
+    }
+    return null;
+  }
+
+  // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Fetching Profile</Loader>;
+    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
   renderPage() {
-    // const userEmail = getProfileId(_.pluck(Meteor.user().username, 'username'));
-    // console.log(userss);
-    const userss = Meteor.user().username;
-    const getData = (this.props.paramId === Meteor.user().username) ? userss : this.props.paramId;
-    const currentUser1 = Profiles.collection.find({ username: getData }).fetch();
     return (
-      <Container>
-        <Grid>
-          {_.map(currentUser1, (profile, index) => <UserProfiles key={index} profile={profile}/>)}
+      <Container id='userprofile-page'>
+        <Grid celled column={2}>
+          <Grid.Row>
+            <Grid.Column width={6}>
+              <Image circular src={this.props.profile.image} size='medium'/>
+            </Grid.Column>
+            <Grid.Column width={10}>
+              <Header inverted as='h1'>
+                <div>{this.props.profile.firstName} {this.props.profile.lastName}</div>
+              </Header>
+              <Header inverted as='h3'>
+                About Me <br/><br/>
+                <div>{this.props.profile.description}</div>
+              </Header>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row column={1}>
+            <Grid.Column>
+              <Header inverted as='h2'>
+                <div>Major: {this.props.profile.major} </div>
+              </Header>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row column={1}>
+            <Grid.Column>
+              <Header inverted as='h2'>
+                <div>Class of: {this.props.profile.year} </div>
+              </Header>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row column={1}>
+            <Grid.Column>
+              <Header inverted as='h2'>
+                {this.isLoggedInUser(this.props.profile.owner)}
+              </Header>
+            </Grid.Column>
+          </Grid.Row>
         </Grid>
       </Container>
     );
@@ -37,19 +75,20 @@ class UserProfilePage extends React.Component {
 
 // Require a object of student profile to be passed to this component.
 UserProfilePage.propTypes = {
-  paramId: PropTypes.string,
+  profile: PropTypes.object,
   ready: PropTypes.bool.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. */
-export default withTracker(({ match }) => {
-  const paramId = match.params._id;
+export default withRouter(withTracker(({ match }) => {
+  const profileOwner = match.params._id;
   // Ensure access to User's profile page
   const subscription = Meteor.subscribe(Profiles.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
+  const profile = Profiles.collection.findOne({ owner: profileOwner });
   return {
-    paramId,
+    profile,
     ready,
   };
-})(UserProfilePage);
+})(UserProfilePage));

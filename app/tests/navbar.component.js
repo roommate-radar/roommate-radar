@@ -17,6 +17,16 @@ class NavBar {
     await testController.click('#login-dropdown-sign-in');
   }
 
+  async gotoProfilesListPage(testController) {
+    await testController.expect(Selector('#navbar-current-user').exists).ok();
+    await testController.click('#navbar-list-profiles');
+  }
+
+  async gotoUserProfilePage(testController) {
+    await testController.expect(Selector('#navbar-current-user').exists).ok();
+    await testController.click('#navbar-user-profile');
+  }
+
   /** Check that the specified user is currently logged in. */
   async isLoggedIn(testController, username) {
     const loggedInUser = Selector('#navbar-current-user').innerText;

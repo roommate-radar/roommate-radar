@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class Landing extends React.Component {
   render() {
     return (
-      <Container fluid className='landing-container-background'>
+      <Container fluid className='landing-container-background' id='landing-page'>
         <Grid container centered columns={2}>
           <Grid.Column textAlign='center'>
             <Header inverted as='h1'>Welcome to Roommate Radar</Header>

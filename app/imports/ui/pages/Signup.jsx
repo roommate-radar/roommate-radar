@@ -54,7 +54,7 @@ class Signup extends React.Component {
               <Segment stacked>
                 <Form.Input
                   label="Username"
-                  id="signin-form-username"
+                  id="signup-form-username"
                   icon="user"
                   iconPosition="left"
                   name="username"
