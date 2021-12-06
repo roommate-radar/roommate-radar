@@ -1,105 +1,61 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
-import { Loader, Grid, Header, Form, Segment } from 'semantic-ui-react';
-import { AutoForm, HiddenField, LongTextField, NumField, SubmitField, TextField } from 'uniforms-semantic';
+import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
 import swal from 'sweetalert';
-import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import SimpleSchema from 'simpl-schema';
-import { _ } from 'meteor/underscore';
+import { AutoForm, ErrorsField, HiddenField, NumField, LongTextField, SubmitField, TextField, RadioField } from 'uniforms-semantic';
+import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
+import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import { Redirect } from 'react-router-dom';
 import { Profiles } from '../../api/profiles/Profiles';
-import { Filters } from '../../api/filters/Filters';
-// import updateProfileMethod from '../../startup/both/Methods';
 
-/** Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = () => new SimpleSchema({
-  username: { type: String, label: 'Username', optional: true },
-  firstName: { type: String, label: 'First', optional: true },
-  lastName: { type: String, label: 'Last', optional: true },
-  image: { type: String, label: 'Image URL', optional: true },
-  gender: { type: String, label: 'Gender', optional: true },
-  major: { type: String, label: 'Major', optional: true },
-  year: { type: Number, label: 'Year', optional: true },
-  description: { type: String, label: 'Description', optional: true },
-  pets: { type: Object, label: 'Pets', optional: true },
-  'pets.blacklist': { type: Array, blackbox: true },
-  'pets.blacklist.$': { type: String, blackbox: true },
-  'pets.whitelist': { type: Array, blackbox: true },
-  'pets.whitelist.$': { type: String, blackbox: true },
-  rent: { type: Object, label: 'Rent', optional: true },
-  'rent.min': Number, 'rent.max': Number,
-});
+const bridge = new SimpleSchema2Bridge(Profiles.schema);
 
-/** Renders the Edit Page. */
 class EditProfile extends React.Component {
-
+  /* Initialize state fields. */
   constructor(props) {
     super(props);
     this.state = { redirectToReferer: false };
   }
 
-  submit(data) {
-    const { firstName, lastName, address, image, gender, major, year, description, pets, rent, owner, username, _id } = data;
-    Profiles.collection.update(_id, { $set: { _id, firstName, lastName, address, image, gender, major, year, description, pets, rent, owner, username } }, data, (error) => {
-      if (error) {
-        swal('Error', error.message, 'error');
+  submit = (data) => {
+    const { firstName, lastName, image, gender, major, year, description, pets, rent, _id } = data;
+    Profiles.collection.update(_id, { $set: { firstName: firstName, lastName: lastName, image: image, gender: gender, major: major, year: year, description: description, pets: pets, rent: rent } }, (err) => {
+      if (err) {
+        swal('Error', err.message, 'error');
       } else {
-        swal('Success', 'Profile updated successfuly', 'success');
+        swal('Success', 'Item updated successfully', 'success');
         this.setState({ redirectToReferer: true });
       }
     });
   }
 
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting Data</Loader>;
+    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
   renderPage() {
-    const email = Meteor.user().username;
-    console.log(email);
-
-    const { from } = this.props.location.state || { from: { pathname: `/profile/${email}` } };
+    const { from } = this.props.location.state || { from: { pathname: `/profile/${Meteor.user().username}` } };
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
     }
 
-
-    const formSchema = makeSchema();
-    const bridge = new SimpleSchema2Bridge(formSchema);
-    const profile = Profiles.collection.findOne({ username: email });
-    console.log(profile);
-    const model = _.extend({}, profile);
-    console.log({ model });
     return (
-      <Grid container centered>
+      <Grid container centered id='editprofile-page'>
         <Grid.Column>
-          <Header as='h2' textAlign='center'>Edit My Profile</Header>
-          <AutoForm model={model} schema={bridge} onSubmit={data => this.submit(data)}>
+          <Header as="h2" textAlign="center">Edit Profile</Header>
+          <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.userProfile}>
             <Segment>
-              <Form.Group width={'equal'}>
-                <TextField id='firstName' name='firstName' showInlineError={true} placeholder={'First Name'}/>
-                <TextField id='lastName' name='lastName' showInlineError={true} placeholder={'Last Name'}/>
-                <TextField id='major' name='major' showInlineError={true} placeholder={'Major'}/>
-              </Form.Group>
-              <Form.Group>
-                <NumField id='year' name='year' showInlineError={true} placeholder={'Year'}/>
-                <TextField id='image' name='image' showInlineError={true} placeholder={'Image URL'}/>
-              </Form.Group>
-              <Form.Group>
-                <TextField id='pets' name='pets.blacklist.$' showInlineError={true} placeholder={'Pets'}/>
-                <TextField id='pets' name='pets.whitelist.$' showInlineError={true} placeholder={'Pets'}/>
-              </Form.Group>
-              <Form.Group>
-                <NumField id='rent' name='rent.min' showInlineError={true} placeholder={'Rent'}/>
-                <NumField id='rent' name='rent.max' showInlineError={true} placeholder={'Rent'}/>
-              </Form.Group>
-              <Form.Group>
-                <LongTextField id='description' name='description' showInlineError={true} placeholder={'Description'}/>
-              </Form.Group>
-              <SubmitField value='Update'/>
-              <HiddenField name='username'/>
+              <TextField name='firstName' id='editprofile-form-firstname'/>
+              <TextField name='lastName' id='editprofile-form-lastname'/>
+              <RadioField allowedValues = { ['Male', 'Female', 'Nonbinary'] } name='gender' id='editprofile-form-gender'/>
+              <TextField name='image' id='editprofile-form-image'/>
+              <TextField name='major' id='editprofile-form-major'/>
+              <NumField name='year' id='editprofile-form-year'/>
+              <LongTextField name='description' id='editprofile-form-description'/>
+              <SubmitField value='Submit' id='editprofile-form-submit'/>
+              <ErrorsField/>
+              <HiddenField name='owner'/>
             </Segment>
           </AutoForm>
         </Grid.Column>
@@ -109,18 +65,21 @@ class EditProfile extends React.Component {
 }
 
 EditProfile.propTypes = {
-  location: PropTypes.object,
-  paramId: PropTypes.string,
+  userProfile: PropTypes.object,
   ready: PropTypes.bool.isRequired,
+  location: PropTypes.object,
 };
 
-export default withTracker(({ match }) => {
-  const paramId = match.params._id;
-  const sub1 = Meteor.subscribe(Filters.userPublicationName);
-  const sub2 = Meteor.subscribe(Profiles.userPublicationName);
-  const ready = sub1.ready() && sub2.ready();
+export default withTracker(() => {
+  // Get access to profile documents.
+  const subscription = Meteor.subscribe(Profiles.userPublicationName);
+  // Determine if the subscription is ready
+  const ready = subscription.ready();
+  // Get the user's profile document
+  const user = Meteor.user().username;
+  const userProfile = Profiles.collection.findOne({ owner: user });
   return {
-    paramId,
+    userProfile,
     ready,
   };
 })(EditProfile);
