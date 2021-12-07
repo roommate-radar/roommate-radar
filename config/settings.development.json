@@ -12,32 +12,32 @@
   "defaultProfiles": [
     {
       "firstName": "Sally", "lastName": "Sparrow", "image": "https://www.allaboutbirds.org/guide/assets/photo/305874101-480px.jpg",
-      "gender": "Female", "major":  "Physics", "year": 2022, "description" : "Hello!", "pets": { "whitelist": ["Cat"], "blacklist": ["Dog"] },
+      "gender": "Female", "major":  "Physics", "year": 2022, "description" : "Working part-time as a cashier at the Piggly Wiggly has given me a great opportunity to observe human behavior. Sometimes I think of the shoppers as white rats in a lab experiment, and the aisles as a maze designed by a psychologist. Most of the rats—customers, I mean—follow a routine pattern, strolling up and down the aisles, checking through my chute, and then escaping through the exit hatch. But not everyone is so dependable. My research has revealed three distinct types of abnormal customer: the amnesiac, the super shopper, and the dawdler.", "pets": { "whitelist": ["Cat"], "blacklist": ["Dog"] },
       "rent": { "min": 1000, "max": 3000 }, "owner": "SillySparrow"
     },
     {
       "firstName": "Thomas", "lastName": "Turtle", "image": "https://www.ucf.edu/news/files/2021/02/juvenile_green_sea_turtle_for_web.jpg",
-      "gender": "Male", "major":  "Dance", "year": 2024, "description" : "Hello!", "pets": { "whitelist": [], "blacklist": [] },
+      "gender": "Male", "major":  "Dance", "year": 2024, "description" : "In March 2006, I found myself, at 38, divorced, no kids, no home, and alone in a tiny rowing boat in the middle of the Atlantic Ocean. I hadn’t eaten a hot meal in two months. I’d had no human contact for weeks because my satellite phone had stopped working. All four of my oars were broken, patched up with duct tape and splints. I had tendinitis in my shoulders and saltwater sores on my backside.", "pets": { "whitelist": [], "blacklist": [] },
       "rent": { "min": 0, "max": "Infinity" }, "owner": "Thortle"
     },
     {
       "firstName": "Phoebe", "lastName": "Frog", "image": "https://www.honoluluzoo.org/wp-content/uploads/IMG_3885.jpg",
-      "gender": "Female", "major":  "Math", "year": 2023, "description" : "Hello!", "pets": { "whitelist": [], "blacklist": [] },
+      "gender": "Female", "major":  "Math", "year": 2023, "description" : "I’m a natural leader. I’ve eventually been promoted to a leadership role in almost every job because I like to help people. I find co-workers usually come to me with questions or concerns even when I’m not in a leadership role because if I don’t know the answer, I’ll at least point them in the right direction. In my last two roles, I was promoted to leadership positions after less than a year with the company.", "pets": { "whitelist": [], "blacklist": [] },
       "rent": { "min": 0, "max": "Infinity" }, "owner": "PhroggyChair"
     },
     {
       "firstName": "Robert", "lastName": "Rabbit", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6eozQB5HYCVjXml5SnCYIIxP5KDkKZ8HqPA&usqp=CAU",
-      "gender": "Male", "major":  "Computer Science", "year": 2025, "description" : "Hello!", "pets": { "whitelist": [], "blacklist": [] },
+      "gender": "Male", "major":  "Computer Science", "year": 2025, "description" : "When I got home from school that day, my grandmother greeted me with a plate of cookies and a worried expression. I hadn't received the scholarship I needed to go to ballet camp, and we'd need to find another way to earn the money. That's when I started my business giving dance lessons to preschoolers, and it's taught me a lot about how to solve problems on my own.", "pets": { "whitelist": [], "blacklist": [] },
       "rent": { "min": 0, "max": "Infinity" }, "owner": "Robbit"
     },
     {
       "firstName": "Casey", "lastName": "Cassowary", "image": "https://blog.nature.org/science/files/2020/08/14318223382_c212e2c88c_k-e1598494581447.jpg",
-      "gender": "Nonbinary", "major":  "Classics", "year": 2022, "description" : "Hello!", "pets": { "whitelist": [], "blacklist": [] },
+      "gender": "Nonbinary", "major":  "Classics", "year": 2022, "description" : "I am highly organized. I always take notes, and I use a series of tools to help myself stay on top of deadlines. I like to keep a clean workspace and create a logical filing method so I’m always able to find what I need. I find this increases efficiency and helps the rest of the team stay on track, too. In my last role, I created a new filing process that increased departmental efficiency 25%.", "pets": { "whitelist": [], "blacklist": [] },
       "rent": { "min": 0, "max": "Infinity" }, "owner": "Caseowary"
     },
     {
       "firstName": "Jerry", "lastName": "Jellyfish", "image": "https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg",
-      "gender": "Male", "major":  "Art History", "year": 2024, "description" : "Hello!", "pets": { "whitelist": [], "blacklist": [] },
+      "gender": "Male", "major":  "Art History", "year": 2024, "description" : "I’m a people-person. I love meeting new people and learning about their lives and their backgrounds. I can almost always find common ground with strangers, and I like making people feel comfortable in my presence. I find this skill is especially helpful when kicking off projects with new clients. In my previous job, my clients’ customer satisfaction scores were 15% over the company average.", "pets": { "whitelist": [], "blacklist": [] },
       "rent": { "min": 0, "max": "Infinity" }, "owner": "Jerryfish"
     }
   ],

@@ -2,3 +2,10 @@
   background: url("images/landing-container-background.jpg") no-repeat center center fixed;
   background-size: cover;
 }
+
+.circular-image {
+  width: 100px;
+  border-radius: 50%;
+  border-width: 10px;
+  border-radius: 10px;
+}

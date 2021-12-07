@@ -34,8 +34,15 @@ const updateProfileMethod = 'Profiles.update';
  */
 Meteor.methods({
   'Profiles.update'({ firstName, lastName, gender, image, major, year, description, pets, rent, owner, _id }) {
-    const petsBlacklist = pets.blacklist.split(',');
-    const petsWhitelist = pets.whitelist.split(',');
+    let petsBlacklist;
+    let petsWhitelist;
+    if (pets.blacklist.includes(',') && pets.whitelist.includes(',')) {
+      petsBlacklist = pets.blacklist.split(',');
+      petsWhitelist = pets.whitelist.split(',');
+    } else {
+      petsBlacklist = pets.blacklist;
+      petsWhitelist = pets.whitelist;
+    }
     Profiles.collection.update(_id, {
       $set: {
         owner: owner,
