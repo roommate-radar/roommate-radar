@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Redirect } from 'react-router-dom';
 import { Profiles } from '../../api/profiles/Profiles';
+// import { updateProfileMethod } from '../../startup/both/Methods';
 
 const bridge = new SimpleSchema2Bridge(Profiles.schema);
 
@@ -20,7 +21,21 @@ class EditProfile extends React.Component {
 
   submit = (data) => {
     const { firstName, lastName, image, gender, major, year, description, pets, rent, _id } = data;
-    Profiles.collection.update(_id, { $set: { firstName: firstName, lastName: lastName, image: image, gender: gender, major: major, year: year, description: description, pets: pets, rent: rent } }, (err) => {
+    const petsBlacklist = pets.blacklist.split(',');
+    const petsWhitelist = pets.whitelist.split(',');
+    Profiles.collection.update(_id, {
+      $set: {
+        _id: _id,
+        firstName: firstName,
+        lastName: lastName,
+        image: image,
+        gender: gender,
+        major: major,
+        year: year,
+        description: description,
+        pets: { blacklist: petsBlacklist, whitelist: petsWhitelist },
+        rent: rent,
+      } }, (err) => {
       if (err) {
         swal('Error', err.message, 'error');
       } else {
@@ -29,6 +44,16 @@ class EditProfile extends React.Component {
       }
     });
   }
+  // submit(data) {
+  //   Meteor.call(updateProfileMethod, data, (err) => {
+  //     if (err) {
+  //       swal('Error', err.message, 'error');
+  //     } else {
+  //       swal('Success', 'Profile updated successfully', 'success');
+  //       this.setState({ redirectToReferer: true });
+  //     }
+  //   });
+  // }
 
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
@@ -48,14 +73,18 @@ class EditProfile extends React.Component {
             <Segment>
               <TextField name='firstName' id='editprofile-form-firstname'/>
               <TextField name='lastName' id='editprofile-form-lastname'/>
-              <RadioField allowedValues = { ['Male', 'Female', 'Nonbinary'] } name='gender' id='editprofile-form-gender'/>
+              <RadioField allowedValues={['Male', 'Female', 'Nonbinary']} name='gender' id='editprofile-form-gender'/>
               <TextField name='image' id='editprofile-form-image'/>
               <TextField name='major' id='editprofile-form-major'/>
               <NumField name='year' id='editprofile-form-year'/>
               <LongTextField name='description' id='editprofile-form-description'/>
+              <TextField name='pets.blacklist' unique='true'/>
+              <TextField name='pets.whitelist' unique='true'/>
+              <NumField name='rent.min'/>
+              <NumField name='rent.max'/>
+              <HiddenField name='owner'/>
               <SubmitField value='Submit' id='editprofile-form-submit'/>
               <ErrorsField/>
-              <HiddenField name='owner'/>
             </Segment>
           </AutoForm>
         </Grid.Column>

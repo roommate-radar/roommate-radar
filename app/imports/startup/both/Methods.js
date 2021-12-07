@@ -33,8 +33,24 @@ const updateProfileMethod = 'Profiles.update';
  * updated situation specified by the user.
  */
 Meteor.methods({
-  'Profiles.update'({ firstName, lastName, address, image, gender, major, year, description, pets, rent, owner, username, _id }) {
-    Profiles.collection.update({ _id }, { $set: { _id, firstName, lastName, address, image, gender, major, year, description, pets, rent, owner, username } });
+  'Profiles.update'({ firstName, lastName, gender, image, major, year, description, pets, rent, owner, _id }) {
+    const petsBlacklist = pets.blacklist.split(',');
+    const petsWhitelist = pets.whitelist.split(',');
+    Profiles.collection.update(_id, {
+      $set: {
+        owner: owner,
+        _id: _id,
+        firstName: firstName,
+        lastName: lastName,
+        image: image,
+        gender: gender,
+        major: major,
+        year: year,
+        description: description,
+        pets: { blacklist: petsBlacklist, whitelist: petsWhitelist },
+        rent: rent,
+      },
+    });
   },
 });
 
