@@ -1,69 +1,97 @@
 import React from 'react';
-import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, LongTextField, SubmitField, TextField, RadioField } from 'uniforms-semantic';
+import { Grid, Header, Segment } from 'semantic-ui-react';
 import swal from 'sweetalert';
+import { AutoForm, ErrorsField, NumField, LongTextField, SubmitField, TextField, RadioField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
+import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+import { Redirect } from 'react-router-dom';
 import { Profiles } from '../../api/profiles/Profiles';
-import { Filters } from '../../api/filters/Filters';
 
-// Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   firstName: String,
   lastName: String,
-  gender: String,
   image: String,
+  gender: String,
   major: String,
   year: Number,
   description: String,
+  pets: Object,
+  'pets.blacklist': Array,
+  'pets.blacklist.$': String,
+  'pets.whitelist': Array,
+  'pets.whitelist.$': String,
+  rent: Object,
+  'rent.min': Number,
+  'rent.max': Number,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-/** Renders the Page for adding a document. */
 class CreateProfile extends React.Component {
-  // On submit, insert the data.
-  submit(data, formRef) {
-    const { firstName, lastName, gender, image, major, year, description } = data;
-    const owner = Meteor.user().username;
-    const pets = { whitelist: [], blacklist: [] }; /* TEMPORARY SOLUTION! REPLACE ME WITH A FIELD IN THE FORM */
-    const rent = { min: 0, max: Infinity }; /* TEMPORARY SOLUTION! REPLACE ME WITH A FIELD IN THE FORM */
-    Profiles.collection.insert({ firstName, lastName, image, gender, major, year, description, pets, rent, owner },
-      (error) => {
-        if (error) {
-          swal('Error', error.message, 'error');
-        } else {
-          swal('Success', 'Item added successfully', 'success');
-          formRef.reset();
-        }
-      });
-    const defaultFilter = {
-      rent: { min: 0, max: Infinity },
-      gender: [],
-      pets: { whitelist: [], blacklist: [] },
-      year: { min: 0, max: Infinity },
-      owner: owner,
-    };
-    Filters.collection.insert(defaultFilter);
+  /* Initialize state fields. */
+  constructor(props) {
+    super(props);
+    this.state = { redirectToReferer: false };
   }
 
-  // Render the form. Use Uniforms: https://github.com/vazco/uniforms
+  submit = (data) => {
+    const { firstName, lastName, image, gender, major, year, description, pets, rent } = data;
+    const owner = Meteor.user().username;
+    Profiles.collection.insert({
+      firstName,
+      lastName,
+      image,
+      gender,
+      major,
+      year,
+      description,
+      pets,
+      rent,
+      owner,
+    }, (error) => {
+      if (error) {
+        swal('Error', error.message, 'error');
+      } else {
+        swal('Success', 'Profile created successfully', 'success');
+        this.setState({ redirectToReferer: true });
+      }
+    });
+  }
+  // submit(data) {
+  //   Meteor.call(updateProfileMethod, data, (err) => {
+  //     if (err) {
+  //       swal('Error', err.message, 'error');
+  //     } else {
+  //       swal('Success', 'Profile updated successfully', 'success');
+  //       this.setState({ redirectToReferer: true });
+  //     }
+  //   });
+  // }
+
   render() {
-    let fRef = null;
+    const { from } = this.props.location.state || { from: { pathname: '' } };
+    if (this.state.redirectToReferer) {
+      return <Redirect to={from}/>;
+    }
     return (
       <Grid container centered id='createprofile-page'>
         <Grid.Column>
-          <Header inverted as="h2" textAlign="center">Create Profile</Header>
-          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
+          <Header as="h2" textAlign="center">Create Profile</Header>
+          <AutoForm schema={bridge} onSubmit={data => this.submit(data)}>
             <Segment>
               <TextField name='firstName' id='createprofile-form-firstname'/>
               <TextField name='lastName' id='createprofile-form-lastname'/>
-              <RadioField allowedValues = { ['Male', 'Female', 'Nonbinary'] } name='gender' id='createprofile-form-gender'/>
+              <RadioField allowedValues={['Male', 'Female', 'Nonbinary']} name='gender' id='createprofile-form-gender'/>
               <TextField name='image' id='createprofile-form-image'/>
               <TextField name='major' id='createprofile-form-major'/>
               <NumField name='year' id='createprofile-form-year'/>
               <LongTextField name='description' id='createprofile-form-description'/>
+              <TextField name='pets.blacklist' unique='true'/>
+              <TextField name='pets.whitelist' unique='true'/>
+              <NumField name='rent.min'/>
+              <NumField name='rent.max'/>
               <SubmitField value='Submit' id='createprofile-form-submit'/>
               <ErrorsField/>
             </Segment>
@@ -73,5 +101,9 @@ class CreateProfile extends React.Component {
     );
   }
 }
+
+CreateProfile.propTypes = {
+  location: PropTypes.object,
+};
 
 export default CreateProfile;
