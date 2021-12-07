@@ -12,8 +12,8 @@
   "defaultProfiles": [
     {
       "firstName": "Sally", "lastName": "Sparrow", "image": "https://www.allaboutbirds.org/guide/assets/photo/305874101-480px.jpg",
-      "gender": "Female", "major":  "Physics", "year": 2022, "description" : "Hello!", "pets": { "whitelist": [], "blacklist": [] },
-      "rent": { "min": 0, "max": "Infinity" }, "owner": "SillySparrow"
+      "gender": "Female", "major":  "Physics", "year": 2022, "description" : "Hello!", "pets": { "whitelist": ["Cat"], "blacklist": ["Dog"] },
+      "rent": { "min": 1000, "max": 3000 }, "owner": "SillySparrow"
     },
     {
       "firstName": "Thomas", "lastName": "Turtle", "image": "https://www.ucf.edu/news/files/2021/02/juvenile_green_sea_turtle_for_web.jpg",
@@ -44,7 +44,7 @@
 
   "defaultFilters": [
     {
-      "rent": { "min": 0, "max": "Infinity" },
+      "rent": { "min": 1000, "max": 3000 },
       "gender": [],
       "pets": { "whitelist": [], "blacklist": [] },
       "year": { "min": 0, "max": "Infinity" },
