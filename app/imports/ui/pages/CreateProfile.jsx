@@ -1,15 +1,33 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
+import { Grid, Header, Segment } from 'semantic-ui-react';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, HiddenField, NumField, LongTextField, SubmitField, TextField, RadioField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, NumField, LongTextField, SubmitField, TextField, RadioField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import SimpleSchema from 'simpl-schema';
 import { Redirect } from 'react-router-dom';
 import { Profiles } from '../../api/profiles/Profiles';
-// import { updateProfileMethod } from '../../startup/both/Methods';
 
-const bridge = new SimpleSchema2Bridge(Profiles.schema);
+const formSchema = new SimpleSchema({
+  firstName: String,
+  lastName: String,
+  image: String,
+  gender: String,
+  major: String,
+  year: Number,
+  description: String,
+  pets: Object,
+  'pets.blacklist': Array,
+  'pets.blacklist.$': String,
+  'pets.whitelist': Array,
+  'pets.whitelist.$': String,
+  rent: Object,
+  'rent.min': Number,
+  'rent.max': Number,
+});
+
+const bridge = new SimpleSchema2Bridge(formSchema);
 
 class CreateProfile extends React.Component {
   /* Initialize state fields. */
@@ -19,26 +37,24 @@ class CreateProfile extends React.Component {
   }
 
   submit = (data) => {
-    const { firstName, lastName, image, gender, major, year, description, pets, rent, _id } = data;
-    const petsBlacklist = pets.blacklist.split(',');
-    const petsWhitelist = pets.whitelist.split(',');
-    Profiles.collection.update(_id, {
-      $set: {
-        _id: _id,
-        firstName: firstName,
-        lastName: lastName,
-        image: image,
-        gender: gender,
-        major: major,
-        year: year,
-        description: description,
-        pets: { blacklist: petsBlacklist, whitelist: petsWhitelist },
-        rent: rent,
-      } }, (err) => {
-      if (err) {
-        swal('Error', err.message, 'error');
+    const { firstName, lastName, image, gender, major, year, description, pets, rent } = data;
+    const owner = Meteor.user().username;
+    Profiles.collection.insert({
+      firstName,
+      lastName,
+      image,
+      gender,
+      major,
+      year,
+      description,
+      pets,
+      rent,
+      owner,
+    }, (error) => {
+      if (error) {
+        swal('Error', error.message, 'error');
       } else {
-        swal('Success', 'Created successfully', 'success');
+        swal('Success', 'Profile created successfully', 'success');
         this.setState({ redirectToReferer: true });
       }
     });
@@ -55,16 +71,15 @@ class CreateProfile extends React.Component {
   // }
 
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/' } };
+    const { from } = this.props.location.state || { from: { pathname: '' } };
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
     }
-
     return (
       <Grid container centered id='createprofile-page'>
         <Grid.Column>
-          <Header as="h2" textAlign="center">Edit Profile</Header>
-          <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.userProfile}>
+          <Header as="h2" textAlign="center">Create Profile</Header>
+          <AutoForm schema={bridge} onSubmit={data => this.submit(data)}>
             <Segment>
               <TextField name='firstName' id='createprofile-form-firstname'/>
               <TextField name='lastName' id='createprofile-form-lastname'/>
@@ -77,7 +92,6 @@ class CreateProfile extends React.Component {
               <TextField name='pets.whitelist' unique='true'/>
               <NumField name='rent.min'/>
               <NumField name='rent.max'/>
-              <HiddenField name='owner'/>
               <SubmitField value='Submit' id='createprofile-form-submit'/>
               <ErrorsField/>
             </Segment>
@@ -89,7 +103,6 @@ class CreateProfile extends React.Component {
 }
 
 CreateProfile.propTypes = {
-  userProfile: PropTypes.object,
   location: PropTypes.object,
 };
 
