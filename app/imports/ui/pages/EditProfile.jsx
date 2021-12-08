@@ -20,7 +20,7 @@ class EditProfile extends React.Component {
   }
 
   submit = (data) => {
-    const { firstName, lastName, image, gender, major, year, description, pets, rent, _id } = data;
+    const { firstName, lastName, image, gender, major, year, description, pets, rent, _id, socialMedia } = data;
     const petsBlacklist = pets.blacklist.split(',');
     const petsWhitelist = pets.whitelist.split(',');
     Profiles.collection.update(_id, {
@@ -34,6 +34,7 @@ class EditProfile extends React.Component {
         year: year,
         description: description,
         pets: { blacklist: petsBlacklist, whitelist: petsWhitelist },
+        socialMedia: socialMedia,
         rent: rent,
       } }, (err) => {
       if (err) {
