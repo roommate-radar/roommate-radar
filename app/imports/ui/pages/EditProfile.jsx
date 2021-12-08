@@ -83,6 +83,9 @@ class EditProfile extends React.Component {
               <TextField name='pets.whitelist' unique='true'/>
               <NumField name='rent.min'/>
               <NumField name='rent.max'/>
+              <TextField name='socialMedia.instagram'/>
+              <TextField name='socialMedia.snapchat'/>
+              <TextField name='socialMedia.discord'/>
               <HiddenField name='owner'/>
               <SubmitField value='Submit' id='editprofile-form-submit'/>
               <ErrorsField/>
