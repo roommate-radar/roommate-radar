@@ -12,7 +12,7 @@ function addProfile(profile) {
   }
 
   console.log(`  Adding: ${profile.firstName} ${profile.lastName} (${profile.owner})`);
-  console.log(whyCantJsonStoreInfinity);
+  Profiles.collection.insert(whyCantJsonStoreInfinity);
 }
 
 // Initialize the database with a default filter document.
