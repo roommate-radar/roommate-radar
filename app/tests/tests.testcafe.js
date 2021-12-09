@@ -14,7 +14,7 @@ import { editprofilePage } from './editprofile.page';
 const credentials = { username: 'PhroggyChair', password: 'changeme' };
 
 fixture('Roommate Radar localhost test with default db')
-    .page('http://localhost:3000');
+  .page('http://localhost:3000');
 
 test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);

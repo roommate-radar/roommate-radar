@@ -26,7 +26,7 @@ class CreateProfilePage {
     await testController.typeText('#createprofile-form-image', image);
     await testController.typeText('#createprofile-form-major', major);
     await testController.click('#createprofile-form-year');
-    await testController.pressKey(year)
+    await testController.pressKey(year);
     await testController.typeText('#createprofile-form-description', description);
     await testController.click('#createprofile-form-submit');
   }
