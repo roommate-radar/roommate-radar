@@ -23,6 +23,7 @@ export default class Signin extends React.Component {
 
   // Handle Signin submission using Meteor's account mechanism.
   submit = () => {
+    console.log(this.state);
     const { text, password } = this.state;
     Meteor.loginWithPassword(text, password, (err) => {
       if (err) {
@@ -73,6 +74,9 @@ export default class Signin extends React.Component {
                 <Form.Button id="signin-form-submit" content="Submit"/>
               </Segment>
             </Form>
+            {this.state.error === 'Incorrect password' ? (
+              <Message>Forgot your password? Click  <Link to="/reset">here</Link></Message>) :
+              ''}
             <Message>
               <Link to="/signup">Click here to Register</Link>
             </Message>
