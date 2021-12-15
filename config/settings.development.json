@@ -1,7 +1,7 @@
 {
   "defaultAccounts": [
     { "username": "admin", "email": "admin@gmail.com", "password": "changeme", "role": "admin" },
-    { "username": "SillySparrow", "email": "ineedtest624@gmail.com", "password": "abc123xyz" },
+    { "username": "SillySparrow", "email": "ssparrow@gmail.com", "password": "abc123xyz" },
     { "username": "Thortle", "email": "tturtle@gmail.com", "password": "changeme" },
     { "username": "PhroggyChair", "email": "pfrog@gmail.com", "password": "changeme" },
     { "username": "Robbit", "email": "rrabbit@gmail.com", "password": "changeme" },
@@ -87,8 +87,8 @@
     }
   ],
   "emails": {
-    "service": "Gmail",
-    "user": "ineedtest624@gmail.com",
-    "password": "abc123xyz"
+  "service": "Gmail",
+  "user": "ineedtest624@gmail.com",
+  "password": "abc123xyz"
   }
 }

@@ -7,7 +7,5 @@ import App from '../../ui/layouts/App.jsx';
 console.log(Meteor.absoluteUrl());
 // Startup the application by rendering the App layout component.
 Meteor.startup(() => {
-  process.env.MAIL_URL = 'smtp://ineedtest642%40gmail.com:abc123xyz@smtp.gmail.com:465/';
-  console.log(process.env);
   render(<App/>, document.getElementById('root'));
 });

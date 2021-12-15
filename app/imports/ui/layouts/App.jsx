@@ -15,6 +15,7 @@ import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import UserProfilePage from '../pages/UserProfilePage';
 import Reset from '../pages/Reset';
+import onReset from '../pages/onReset';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -29,6 +30,7 @@ class App extends React.Component {
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
             <Route path="/reset" component={Reset}/>
+            <Route path="/reset-password/:_id" component={onReset}/>
             <ProtectedRoute path="/profiles" component={ListProfile}/>
             <ProtectedRoute path="/add" component={CreateProfile}/>
             <ProtectedRoute path="/edit/:_username" component={EditProfile}/>

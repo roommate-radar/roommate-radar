@@ -27,45 +27,6 @@ import { Profiles } from '../../api/profiles/Profiles';
  * back if any of the intermediate updates failed. Left as an exercise to the reader.
  */
 
-// const resetProfileMethod = 'Profiles.reset';
-
-// // Utility for plucking addresses from emails
-// const pluckAddresses = (emails = []) => emails.map(email => email.address);
-//
-// // Method called by a user to request a password reset email. This is
-// // the start of the reset process.
-// Meteor.methods({
-//   forgotPassword: options => {
-//     check(options, { email: String });
-//
-//     const user = Accounts.findUserByEmail(options.email, { fields: { emails: 1 } });
-//
-//     if (!user) {
-//       handleError('User not found');
-//     }
-//
-//     const emails = pluckAddresses(user.emails);
-//     const caseSensitiveEmail = emails.find(
-//       email => email.toLowerCase() === options.email.toLowerCase(),
-//     );
-//
-//     Accounts.sendResetPasswordEmail(user._id, caseSensitiveEmail);
-//   },
-// });
-
-// onSubmit(e) {
-//   e.preventDefault();
-//   let email = this.refs.email.value.trim();
-//   console.log('email', email);
-//
-//   Accounts.forgotPassword({email: email}, function (e, r) {
-//     if (e) {
-//       console.log(e.reason);
-//     } else {
-//       // success
-//     }
-//   });
-// }
 const updateProfileMethod = 'Profiles.update';
 
 /**
@@ -121,4 +82,4 @@ Meteor.methods({
 //   },
 // });
 
-export { updateProfileMethod, resetProfileMethod };
+export { updateProfileMethod };

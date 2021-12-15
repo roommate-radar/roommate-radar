@@ -1,20 +1,21 @@
 import React from 'react';
 import { Container, Header, Grid, Segment } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-semantic';
+import { withTracker } from 'meteor/react-meteor-data';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Accounts } from 'meteor/accounts-base';
-import swal from 'sweetalert';
 import { Redirect } from 'react-router-dom';
+import swal from 'sweetalert';
 import PropTypes from 'prop-types';
 
 const formSchema = new SimpleSchema({
-  email: String,
+  password: { type: String, label: 'New Password' },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-export default class Reset extends React.Component {
+class onReset extends React.Component {
   // Initialize component state with properties for login and redirection.
   constructor(props) {
     super(props);
@@ -23,14 +24,15 @@ export default class Reset extends React.Component {
 
   // Handle Signin submission using Meteor's account mechanism.
   submit = (data) => {
-    console.log(data);
-    const { email } = data;
-    Accounts.forgotPassword({ email: email }, (err, output) => {
+    const { password } = data;
+    const token = this.props.documentId;
+    console.log(token, password);
+    Accounts.resetPassword(token, password, (err, output) => {
       if (err) {
         swal('Error', err.message, 'error');
       } else {
         console.log(output);
-        swal('Success', 'Link to reset your password has been sent!', 'success');
+        swal('Success', 'Password updated!', 'success');
         this.setState({ redirectToReferer: true });
       }
     });
@@ -44,19 +46,15 @@ export default class Reset extends React.Component {
     }
     return (
       <Container text>
-        <Header as='h1'>Forgot your password?</Header>
         <Grid divide='vertically' centered>
           <Grid.Row columns={2}>
             <Grid.Column>
-              <p>
-                Enter the email address associated with your account in the text field to the right. We will then send an email to that address containing a link that will redirect you to a page where you can reset the password for your
-                account.
-              </p>
+              <Header as='h1'>Please enter your new password</Header>
             </Grid.Column>
             <Grid.Column>
               <AutoForm schema={bridge} onSubmit={data => this.submit(data)}>
                 <Segment>
-                  <TextField name='email'/>
+                  <TextField name='password'/>
                   <SubmitField value='Submit'/>
                   <ErrorsField/>
                 </Segment>
@@ -69,6 +67,15 @@ export default class Reset extends React.Component {
   }
 }
 
-Reset.propTypes = {
+onReset.propTypes = {
+  documentId: PropTypes.string,
   location: PropTypes.object,
 };
+
+export default withTracker(({ match }) => {
+  const documentId = match.params._id;
+  console.log(documentId);
+  return {
+    documentId,
+  };
+})(onReset);
