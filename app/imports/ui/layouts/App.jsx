@@ -13,6 +13,7 @@ import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
+import DeleteProfile from '../pages/DeleteProfile';
 import UserProfilePage from '../pages/UserProfilePage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
@@ -30,6 +31,7 @@ class App extends React.Component {
             <ProtectedRoute path="/profiles" component={ListProfile}/>
             <ProtectedRoute path="/add" component={CreateProfile}/>
             <ProtectedRoute path="/edit/:_username" component={EditProfile}/>
+            <ProtectedRoute path="/delete/:_username" component={DeleteProfile}/>
             <Route path="/profile/:_id" component={UserProfilePage}/>
             <Route component={NotFound}/>
           </Switch>

@@ -13,11 +13,18 @@ class UserProfilePage extends React.Component {
     // console.log(param1);
     if (profileOwner === Meteor.user().username) {
       return (
-        <Button>
-          <Link to={`/edit/${this.props.profile.owner}`} id='userprofile-editprofile'>
-            Edit Profile
-          </Link>
-        </Button>
+        <Container>
+          <Button>
+            <Link to={`/edit/${this.props.profile.owner}`} id='userprofile-editprofile'>
+              Edit Profile
+            </Link>
+          </Button>
+          <Button>
+            <Link to={`/delete/${this.props.profile.owner}`} id='userprofile-editprofile'>
+              Delete Profile
+            </Link>
+          </Button>
+        </Container>
       );
     }
     return null;
