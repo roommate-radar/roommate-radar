@@ -33,5 +33,5 @@ if (Meteor.isServer) {
     Accounts.urls.resetPassword = (token) => Meteor.absoluteUrl(`#/reset%2Dpassword/${token}`);
   });
   // ineedtest642@gmail.com
-  process.env.MAIL_URL = `smtps://ineedtest642@gmail.com:${Meteor.settings.emails.password}@smtp.gmail.com:465/`;
+  process.env.MAIL_URL = `smtps://your-edu-email:${Meteor.settings.emails.password}@smtp.gmail.com:465/`;
 }

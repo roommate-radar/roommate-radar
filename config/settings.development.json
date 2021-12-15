@@ -1,12 +1,12 @@
 {
   "defaultAccounts": [
-    { "username": "admin", "email": "admin@gmail.com", "password": "changeme", "role": "admin" },
-    { "username": "SillySparrow", "email": "ssparrow@gmail.com", "password": "abc123xyz" },
-    { "username": "Thortle", "email": "tturtle@gmail.com", "password": "changeme" },
-    { "username": "PhroggyChair", "email": "pfrog@gmail.com", "password": "changeme" },
-    { "username": "Robbit", "email": "rrabbit@gmail.com", "password": "changeme" },
-    { "username": "Caseowary", "email": "ccassowary@gmail.com", "password": "changeme" },
-    { "username": "Jerryfish", "email": "jjellyfish@gmail.com", "password": "changeme" }
+    { "username": "admin", "email": "admin@ghawaii.edu", "password": "changeme", "role": "admin" },
+    { "username": "SillySparrow", "email": "ssparrow@hawaii.edu", "password": "abc123xyz" },
+    { "username": "Thortle", "email": "tturtle@hawaii.edu", "password": "changeme" },
+    { "username": "PhroggyChair", "email": "pfrog@hawaii.edu", "password": "changeme" },
+    { "username": "Robbit", "email": "rrabbit@hawaii.edu", "password": "changeme" },
+    { "username": "Caseowary", "email": "ccassowary@hawaii.edu", "password": "changeme" },
+    { "username": "Jerryfish", "email": "jjellyfish@hawaii.edu", "password": "changeme" }
   ],
 
   "defaultProfiles": [
@@ -88,7 +88,7 @@
   ],
   "emails": {
   "service": "Gmail",
-  "user": "ineedtest624@gmail.com",
-  "password": "abc123xyz"
+  "user": "your-edu-email,
+  "password": "your-edu-password"
   }
 }

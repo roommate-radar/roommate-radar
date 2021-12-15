@@ -48,7 +48,7 @@ test('Test that the user profile page shows up', async (testController) => {
 test('Test that the create profile page shows up', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSignupPage(testController);
-  await signupPage.signupUser(testController, 'Sealene', 'sseahorse@gmail.com', 'changeme');
+  await signupPage.signupUser(testController, 'Sealene', 'sseahorse@hawaii.edu', 'changeme');
   await createprofilePage.isDisplayed(testController);
 });
 
@@ -64,7 +64,7 @@ test('Test that the edit profile page shows up', async (testController) => {
 test('Test that CreateProfile correctly adds a profile to the ProfilesCollection Mongo collection', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSignupPage(testController);
-  await signupPage.signupUser(testController, 'kittykat', 'kcat@gmail.com', 'changeme');
+  await signupPage.signupUser(testController, 'kittykat', 'kcat@hawaii.edu', 'changeme');
   await createprofilePage.createProfile(testController, 'Kathryn', 'Wong', 'female',
     'images/Kathy.jpg',
     'History', '2 0 2 2', 'Hello!');
