@@ -26,3 +26,12 @@ if (Meteor.users.find().count() === 0) {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }
 }
+if (Meteor.isServer) {
+  Meteor.startup(() => {
+    // Accounts.emailTemplates.siteName = 'roommate-radar';
+    // Accounts.emailTemplates.from = 'roommate-radar <ineedtest624@gmail.com>';
+    Accounts.urls.resetPassword = (token) => Meteor.absoluteUrl(`#/reset%2Dpassword/${token}`);
+  });
+  // ineedtest642@gmail.com
+  process.env.MAIL_URL = `smtps://ineedtest642@gmail.com:${Meteor.settings.emails.password}@smtp.gmail.com:465/`;
+}

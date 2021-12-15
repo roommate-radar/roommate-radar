@@ -22,7 +22,7 @@ class Signup extends React.Component {
   /* Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit = () => {
     const { email, username, password } = this.state;
-    const x = email.search('@hawaii.edu');
+    const x = email.search('@gmail.com');
     if (x > -1) {
       Accounts.createUser({ email, username: username, password }, (err) => {
         if (err) {

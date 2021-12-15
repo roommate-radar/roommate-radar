@@ -26,7 +26,7 @@ react-meteor-data                # React higher-order component for reactively t
 # tracker@1.2.0                    # Meteor's client-side reactive programming library
 
 # Accounts
-accounts-password@2.1.0
+accounts-password
 alanning:roles                   # support roles like 'admin'
 
 # Collection support
@@ -40,3 +40,5 @@ ejson@1.1.1                      # https://docs.meteor.com/api/ejson.html
 # Application Performance Monitoring
 montiapm:agent                   # see http://montiapm.com
 zodern:hide-production-sourcemaps
+email@2.1.0
+accounts-base

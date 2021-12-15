@@ -1,44 +1,44 @@
 {
   "defaultAccounts": [
-    { "username": "admin", "email": "admin@hawaii.edu", "password": "changeme", "role": "admin" },
-    { "username": "SillySparrow", "email": "ssparrow@hawaii.edu", "password": "changeme" },
-    { "username": "Thortle", "email": "tturtle@hawaii.edu", "password": "changeme" },
-    { "username": "PhroggyChair", "email": "pfrog@hawaii.edu", "password": "changeme" },
-    { "username": "Robbit", "email": "rrabbit@hawaii.edu", "password": "changeme" },
-    { "username": "Caseowary", "email": "ccassowary@hawaii.edu", "password": "changeme" },
-    { "username": "Jerryfish", "email": "jjellyfish@hawaii.edu", "password": "changeme" }
+    { "username": "admin", "email": "admin@gmail.com", "password": "changeme", "role": "admin" },
+    { "username": "SillySparrow", "email": "ssparrow@gmail.com", "password": "abc123xyz" },
+    { "username": "Thortle", "email": "tturtle@gmail.com", "password": "changeme" },
+    { "username": "PhroggyChair", "email": "pfrog@gmail.com", "password": "changeme" },
+    { "username": "Robbit", "email": "rrabbit@gmail.com", "password": "changeme" },
+    { "username": "Caseowary", "email": "ccassowary@gmail.com", "password": "changeme" },
+    { "username": "Jerryfish", "email": "jjellyfish@gmail.com", "password": "changeme" }
   ],
 
   "defaultProfiles": [
     {
-      "firstName": "Sally", "lastName": "Sparrow", "image": "https://www.allaboutbirds.org/guide/assets/photo/305874101-480px.jpg",
-      "gender": "Female", "major":  "Physics", "year": 2022, "description" : "Working part-time as a cashier at the Piggly Wiggly has given me a great opportunity to observe human behavior. Sometimes I think of the shoppers as white rats in a lab experiment, and the aisles as a maze designed by a psychologist. Most of the rats—customers, I mean—follow a routine pattern, strolling up and down the aisles, checking through my chute, and then escaping through the exit hatch. But not everyone is so dependable. My research has revealed three distinct types of abnormal customer: the amnesiac, the super shopper, and the dawdler.", "pets": { "whitelist": ["Cat"], "blacklist": ["Dog"] },
-      "rent": { "min": 1000, "max": 3000 }, "owner": "SillySparrow"
+      "firstName": "Holly", "lastName": "Stewart", "image": "images/Holly.jpg",
+      "gender": "Female", "major":  "Physics", "year": 2022, "description" : "I'm looking for a roomie. My college roommate I shared a dorm room with during my first year of college said I was the best, so take her word for it. I could be the perfect roommate for you! I'm even open to living with college students (get out of that residence hall already!). I'm moving to New York City this summer to start a new part time job at a company. People say I'm easy to live with. I clean up after myself. I'm honest. I have a cat. I'm a fun guy. My favorite show is The Office. If we would get along, reply to my roommate-wanted ad! I can't wait to meet my new friend!", "pets": { "whitelist": ["Dog"], "blacklist": ["Cat"] },
+      "rent": { "min": 1000, "max": 2000 }, "owner": "SillySparrow"
     },
     {
-      "firstName": "Thomas", "lastName": "Turtle", "image": "https://www.ucf.edu/news/files/2021/02/juvenile_green_sea_turtle_for_web.jpg",
-      "gender": "Male", "major":  "Dance", "year": 2024, "description" : "In March 2006, I found myself, at 38, divorced, no kids, no home, and alone in a tiny rowing boat in the middle of the Atlantic Ocean. I hadn’t eaten a hot meal in two months. I’d had no human contact for weeks because my satellite phone had stopped working. All four of my oars were broken, patched up with duct tape and splints. I had tendinitis in my shoulders and saltwater sores on my backside.", "pets": { "whitelist": [], "blacklist": [] },
-      "rent": { "min": 0, "max": "Infinity" }, "owner": "Thortle"
+      "firstName": "Aaron", "lastName": "Baker", "image": "images/Aaron.jpg",
+      "gender": "Male", "major":  "Dance", "year": 2024, "description" : "My name is Aaron. My lease is about to end and my current roommate is moving, so I'm looking for a new house and roommate. My friends would describe me as nerdy, goofy, and energetic. I'm a big fan of video games, and I enjoy watching movies. I also like going to group exercise classes such as spin classes. In high school, I was on the field hockey team. I even made the varsity team my freshman year!", "pets": { "whitelist": ["Dog", "Cat"], "blacklist": ["Mouse"] },
+      "rent": { "min": 1500, "max": 3000 }, "owner": "Thortle"
     },
     {
-      "firstName": "Phoebe", "lastName": "Frog", "image": "https://www.honoluluzoo.org/wp-content/uploads/IMG_3885.jpg",
-      "gender": "Female", "major":  "Math", "year": 2023, "description" : "I’m a natural leader. I’ve eventually been promoted to a leadership role in almost every job because I like to help people. I find co-workers usually come to me with questions or concerns even when I’m not in a leadership role because if I don’t know the answer, I’ll at least point them in the right direction. In my last two roles, I was promoted to leadership positions after less than a year with the company.", "pets": { "whitelist": [], "blacklist": [] },
-      "rent": { "min": 0, "max": "Infinity" }, "owner": "PhroggyChair"
+      "firstName": "Audrey", "lastName": "Kham", "image": "images/Audrey.jpg",
+      "gender": "Female", "major":  "Math", "year": 2023, "description" : "I'm Audrey. I'm originally from Silver Spring, Maryland, but I've been living in Pittsburgh for the past four years. My friends would describe me as easy-going, sarcastic, analytical, and independent. In my free time, I like to spend my time outside, either alone or with others. On the weekends, I often head out to go to the beach, or hike. I like my house to be clean. I'm allergic to dogs, so I can't live with anyone that has a dog. However, I'm okay with living with cats.", "pets": { "whitelist": ["Cat"], "blacklist": ["Dog"] },
+      "rent": { "min": 1000, "max": 4000 }, "owner": "PhroggyChair"
     },
     {
-      "firstName": "Robert", "lastName": "Rabbit", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6eozQB5HYCVjXml5SnCYIIxP5KDkKZ8HqPA&usqp=CAU",
-      "gender": "Male", "major":  "Computer Science", "year": 2025, "description" : "When I got home from school that day, my grandmother greeted me with a plate of cookies and a worried expression. I hadn't received the scholarship I needed to go to ballet camp, and we'd need to find another way to earn the money. That's when I started my business giving dance lessons to preschoolers, and it's taught me a lot about how to solve problems on my own.", "pets": { "whitelist": [], "blacklist": [] },
+      "firstName": "Darius", "lastName": "Glover", "image": "images/Darius.jpg",
+      "gender": "Male", "major":  "Computer Science", "year": 2025, "description" : "Hi, Darius! I'm a pretty social person, but I also need my alone time. I want my house to be a place where I can have people over, but not a place that's constantly full of people. I'm open to the idea of my roommates hosting small parties - I would just like to know about these ahead of time. I'm down to get to know each other; I'm not saying we have to be best friends, but I would like to do things like occasionally watch TV together and host cook outs for friends. If you're not open to the idea of sharing a meal together every once in a while, we're probably not a good fit.", "pets": { "whitelist": ["Dog", "Hamster"], "blacklist": ["Cat"] },
       "rent": { "min": 0, "max": "Infinity" }, "owner": "Robbit"
     },
     {
-      "firstName": "Casey", "lastName": "Cassowary", "image": "https://blog.nature.org/science/files/2020/08/14318223382_c212e2c88c_k-e1598494581447.jpg",
-      "gender": "Nonbinary", "major":  "Classics", "year": 2022, "description" : "I am highly organized. I always take notes, and I use a series of tools to help myself stay on top of deadlines. I like to keep a clean workspace and create a logical filing method so I’m always able to find what I need. I find this increases efficiency and helps the rest of the team stay on track, too. In my last role, I created a new filing process that increased departmental efficiency 25%.", "pets": { "whitelist": [], "blacklist": [] },
-      "rent": { "min": 0, "max": "Infinity" }, "owner": "Caseowary"
+      "firstName": "Alex", "lastName": "Gonzales", "image": "images/Alex.jpg",
+      "gender": "Nonbinary", "major":  "Classics", "year": 2022, "description" : "Heyy! I'm Alex. I like to keep common living spaces pretty clean. I do my dishes every day and put away my belongings when I get home from work. I'm open to the idea of a cleaning schedule to keep things organized.\n\nMy monthly budget is $800, and I'm looking to move in sometime during May. I'm hoping to find a house near Frick Park in the Regent Square, Point Breeze, or Squirrel Hill neighborhoods. I would like my own bedroom, and I'm open to living with 1-3 other people. Ideally, the house would have a yard or at least a porch. If the bedrooms are sized differently enough to justify different prices, I'm happy staying in the larger or smaller room.", "pets": { "whitelist": ["Fish"], "blacklist": ["Lizard"] },
+      "rent": { "min": 500, "max": 1500 }, "owner": "Caseowary"
     },
     {
-      "firstName": "Jerry", "lastName": "Jellyfish", "image": "https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg",
-      "gender": "Male", "major":  "Art History", "year": 2024, "description" : "I’m a people-person. I love meeting new people and learning about their lives and their backgrounds. I can almost always find common ground with strangers, and I like making people feel comfortable in my presence. I find this skill is especially helpful when kicking off projects with new clients. In my previous job, my clients’ customer satisfaction scores were 15% over the company average.", "pets": { "whitelist": [], "blacklist": [] },
-      "rent": { "min": 0, "max": "Infinity" }, "owner": "Jerryfish"
+      "firstName": "Augustine", "lastName": "Schmidt", "image": "images/Agustine.jpg",
+      "gender": "Male", "major":  "Art History", "year": 2024, "description" : "I'm Augustine. Here are some quirks and relevant information: I'm sometimes overwhelmed by loud noises and can't stand cupboard doors being left open. So, if you're someone that needs to have the volume on the TV up to the maximum, we might not be the best fit. With that said, I'm not going to get upset at you for making popcorn at night or watching your favorite TV show at a normal volume. I'm not a smoker and I don't want to live with smokers. I'm sort of a beer snob. I'm not into the whole social media thing.", "pets": { "whitelist": ["Cat"], "blacklist": ["Dog"] },
+      "rent": { "min": 2500, "max": 5000 }, "owner": "Jerryfish"
     }
   ],
 
@@ -85,5 +85,10 @@
       "year": { "min": 0, "max": "Infinity" },
       "owner": "Jerryfish"
     }
-  ]
+  ],
+  "emails": {
+  "service": "Gmail",
+  "user": "ineedtest624@gmail.com",
+  "password": "abc123xyz"
+  }
 }

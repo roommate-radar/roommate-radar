@@ -4,8 +4,8 @@ import { Meteor } from 'meteor/meteor';
 import App from '../../ui/layouts/App.jsx';
 
 /* global document */
-
+console.log(Meteor.absoluteUrl());
 // Startup the application by rendering the App layout component.
 Meteor.startup(() => {
-  render(<App />, document.getElementById('root'));
+  render(<App/>, document.getElementById('root'));
 });
