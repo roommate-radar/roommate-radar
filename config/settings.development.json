@@ -1,6 +1,6 @@
 {
   "defaultAccounts": [
-    { "username": "admin", "email": "admin@ghawaii.edu", "password": "changeme", "role": "admin" },
+    { "username": "admin", "email": "admin@hawaii.edu", "password": "changeme", "role": "admin" },
     { "username": "SillySparrow", "email": "ssparrow@hawaii.edu", "password": "abc123xyz" },
     { "username": "Thortle", "email": "tturtle@hawaii.edu", "password": "changeme" },
     { "username": "PhroggyChair", "email": "pfrog@hawaii.edu", "password": "changeme" },
@@ -88,7 +88,7 @@
   ],
   "emails": {
   "service": "Gmail",
-  "user": "your-edu-email,
+  "user": "your-edu-email",
   "password": "your-edu-password"
   }
 }
