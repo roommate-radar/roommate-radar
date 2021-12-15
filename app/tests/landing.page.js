@@ -10,7 +10,7 @@ class LandingPage {
   async isDisplayed(testController) {
     const waitTime = 25;
     // This is first test to be run. Wait 10 seconds to avoid timeouts with GitHub Actions.
-    await testController.wait(10000).expect(this.pageSelector.exists).ok();
+    await testController.wait(waitTime * 10000).expect(this.pageSelector.exists).ok();
   }
 }
 
