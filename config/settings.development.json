@@ -6,7 +6,19 @@
     { "username": "PhroggyChair", "email": "pfrog@hawaii.edu", "password": "changeme" },
     { "username": "Robbit", "email": "rrabbit@hawaii.edu", "password": "changeme" },
     { "username": "Caseowary", "email": "ccassowary@hawaii.edu", "password": "changeme" },
-    { "username": "Jerryfish", "email": "jjellyfish@hawaii.edu", "password": "changeme" }
+    { "username": "Jerryfish", "email": "jjellyfish@hawaii.edu", "password": "changeme" },
+    { "username": "Bisket", "email": "bisket@hawaii.edu", "password": "changeme" },
+    { "username": "Lily", "email": "lily@hawaii.edu", "password": "changeme" },
+    { "username": "Brandon", "email": "brandon@hawaii.edu", "password": "changeme" },
+    { "username": "Justin", "email": "jchan@hawaii.edu", "password": "changeme" },
+    { "username": "Kaleb", "email": "kaleb@hawaii.edu", "password": "changeme" },
+    { "username": "Bianca", "email": "bwhite@hawaii.edu", "password": "changeme" },
+    { "username": "Bob", "email": "bbobb@hawaii.edu", "password": "changeme" },
+    { "username": "Anabelle", "email": "anabelle@hawaii.edu", "password": "changeme" },
+    { "username": "Bella", "email": "bizabelle@hawaii.edu", "password": "changeme" },
+    { "username": "Roald", "email": "roaldonald@hawaii.edu", "password": "changeme" },
+    { "username": "Sydney", "email": "sydneyd@hawaii.edu", "password": "changeme" },
+    { "username": "Vanessa", "email": "vvanessa@hawaii.edu", "password": "changeme" }
   ],
 
   "defaultProfiles": [
@@ -39,6 +51,66 @@
       "firstName": "Jerry", "lastName": "Jellyfish", "image": "https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg",
       "gender": "Male", "major":  "Art History", "year": 2024, "description" : "I’m a people-person. I love meeting new people and learning about their lives and their backgrounds. I can almost always find common ground with strangers, and I like making people feel comfortable in my presence. I find this skill is especially helpful when kicking off projects with new clients. In my previous job, my clients’ customer satisfaction scores were 15% over the company average.", "pets": { "whitelist": [], "blacklist": [] },
       "rent": { "min": 0, "max": "Infinity" }, "owner": "Jerryfish"
+    },
+    {
+      "firstName": "Biskit", "lastName": "Robin", "image": "https://www.allaboutbirds.org/guide/assets/photo/305874101-480px.jpg",
+      "gender": "Male", "major":  "Chemistry", "year": 2022, "description" : "Yo dawg, I love good food, good sleep and good comics. I've been collecting comic books since I was 6. My favorite comic is Calvin and Hobbes. I don't like it when people get up into my face of business. I also enjoy playing basket ball. If you play hit me up for a couple rounds!", "pets": { "whitelist": ["Cat"], "blacklist": ["Dog"] },
+      "rent": { "min": 1000, "max": 3000 }, "owner": "BiskitR"
+    },
+    {
+      "firstName": "Lily", "lastName": "Reini", "image": "https://www.ucf.edu/news/files/2021/02/juvenile_green_sea_turtle_for_web.jpg",
+      "gender": "Female", "major":  "Teaching", "year": 2024, "description" : "My name is Lily and I enjoy listing to music. I also enjoy tending to my garden and I keep several plants in my room. I hope you don't mind having some flowers as company. I like keeping things sweet and simple. My goal in life is to become a teacher.", "pets": { "whitelist": [], "blacklist": [] },
+      "rent": { "min": 0, "max": "Infinity" }, "owner": "LilyR"
+    },
+    {
+      "firstName": "Brandon", "lastName": "Peterson", "image": "https://www.honoluluzoo.org/wp-content/uploads/IMG_3885.jpg",
+      "gender": "Male", "major":  "English", "year": 2023, "description" : "I'm a night owl, I enjoy staying up late. I like playing video games. My favorite game is fallout. I own 2 dogs but I am allergic to cats. My girlfriend and I like to go in hikes in the morning and watch the sunrise.", "pets": { "whitelist": [], "blacklist": [] },
+      "rent": { "min": 0, "max": "Infinity" }, "owner": "BrandonP"
+    },
+    {
+      "firstName": "Justin", "lastName": "Chan", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6eozQB5HYCVjXml5SnCYIIxP5KDkKZ8HqPA&usqp=CAU",
+      "gender": "Male", "major":  "Computer Science", "year": 2025, "description" : "When I get older I hope to own at least 5 cats. I love cats. My favorite type of cat are the fat ones. I love the fat ones because their big bellies mean that they can hold more love. ", "pets": { "whitelist": [], "blacklist": [] },
+      "rent": { "min": 0, "max": "Infinity" }, "owner": "JustinC"
+    },
+    {
+      "firstName": "Kaleb", "lastName": "Harrel", "image": "https://blog.nature.org/science/files/2020/08/14318223382_c212e2c88c_k-e1598494581447.jpg",
+      "gender": "Nonbinary", "major":  "Animation", "year": 2022, "description" : "I am lazy and laid back. I love food and relaxing. I enjoy fishing. My favorite part of the fish are the heads. People who work out a lot confuse me. Why would you spend your time working out so much when you can relax.", "pets": { "whitelist": [], "blacklist": [] },
+      "rent": { "min": 0, "max": "Infinity" }, "owner": "KalebH"
+    },
+    {
+      "firstName": "Bianca", "lastName": "White", "image": "https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg",
+      "gender": "Female", "major":  "Biology", "year": 2024, "description" : "Hey there, my name is Bianca! I love watching birds! Did you know that there are over 500 species of birds on earth! I didn't know that either until my high school biology teacher told me. My favorite type of bird is the pigeon because they are everywhere!", "pets": { "whitelist": [], "blacklist": [] },
+      "rent": { "min": 0, "max": "Infinity" }, "owner": "BiancaW"
+    },
+    {
+      "firstName": "Bob", "lastName": "Bobby", "image": "https://www.allaboutbirds.org/guide/assets/photo/305874101-480px.jpg",
+      "gender": "Male", "major":  "Physics", "year": 2022, "description" : "pthhhpth...I like to sleep... When it rains I like to stand in the rain with my Gelato umbrella... I like the sounds of rain hitting my umbrella... You only live once... or nine times if your a cat... pthhhpth...", "pets": { "whitelist": ["Cat"], "blacklist": ["Dog"] },
+      "rent": { "min": 1000, "max": 3000 }, "owner": "BobB"
+    },
+    {
+      "firstName": "Anabelle", "lastName": "Arumi", "image": "https://www.ucf.edu/news/files/2021/02/juvenile_green_sea_turtle_for_web.jpg",
+      "gender": "Female", "major":  "Fashion", "year": 2024, "description" : "I really like fashion. If you want to be my roommate you need to dress to impress. Just kidding! If you don't dress nice, I can revamp your wardrobe! One day I hope that I will become famous from my trendy clothing. I also enjoy reading and own an extensive book collection. I hope that I can share my books with you one day!", "pets": { "whitelist": [], "blacklist": [] },
+      "rent": { "min": 0, "max": "Infinity" }, "owner": "AnabelleA"
+    },
+    {
+      "firstName": "Bella", "lastName": "Izabella", "image": "https://www.honoluluzoo.org/wp-content/uploads/IMG_3885.jpg",
+      "gender": "Female", "major":  "Music", "year": 2023, "description" : "My name is Bella and I love rock and roll. I enjoy making my own music and playing my songs with my friends. I often stay up late and sometimes stay up until the morning. I'm fine with almost anything so let me know if you're interested in rooming with me, I'm sure we can work something out! The only thing that I can't be with is cats.", "pets": { "whitelist": [], "blacklist": [] },
+      "rent": { "min": 0, "max": "Infinity" }, "owner": "BellaI"
+    },
+    {
+      "firstName": "Roald", "lastName": "Adelie", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6eozQB5HYCVjXml5SnCYIIxP5KDkKZ8HqPA&usqp=CAU",
+      "gender": "Male", "major":  "Physics", "year": 2025, "description" : "I'm Roald. Some of the hobbies include fishing and catching bugs. I have an extensive bug collection, so I hope you are fine with my bugs on the wall. I also enjoy going to the gym and playing golf. I don't own any pets but I wouldn't mind living with a pet. There aren't many things I can't stand living with so DM me let me know if you want to room together.", "pets": { "whitelist": [], "blacklist": [] },
+      "rent": { "min": 0, "max": "Infinity" }, "owner": "RoaldA"
+    },
+    {
+      "firstName": "Sydney", "lastName": "Doni", "image": "https://blog.nature.org/science/files/2020/08/14318223382_c212e2c88c_k-e1598494581447.jpg",
+      "gender": "Nonbinary", "major":  "Film", "year": 2022, "description" : "Hey, I'm Sydney! I can get along with almost everyone so please let me know if you'd like to room with me! Somethings that you'd should know about me are that, I wake up early everyday at 6:00 AM, I dislike loud music, and that I can play the violin. I also know how to cook and wouldn't mind making a meal for the two of us. Just help me pay for the groceries!", "pets": { "whitelist": [], "blacklist": [] },
+      "rent": { "min": 0, "max": "Infinity" }, "owner": "SydneyD"
+    },
+    {
+      "firstName": "Vanessa", "lastName": "Brown", "image": "https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg",
+      "gender": "Female", "major":  "Computer Science", "year": 2024, "description" : "Hi there! My name is Vanessa Brown and I'm a computer science major. Some of my hobbies include drawing, and music. I like to keep things tidy and organized. I own two birds named Lary and Gary. If you're okay with living with the two sweetest bird please let me know! They are super sweet and aren't afraid of new people or other pets! If you do have other pets let me know so that we may try see if your pets are compatible with mine.", "pets": { "whitelist": [], "blacklist": [] },
+      "rent": { "min": 0, "max": "Infinity" }, "owner": "VanessaB"
     }
   ],
 
@@ -84,6 +156,90 @@
       "pets": { "whitelist": [], "blacklist": [] },
       "year": { "min": 0, "max": "Infinity" },
       "owner": "Jerryfish"
+    },
+    {
+      "rent": { "min": 0, "max": "Infinity" },
+      "gender": [],
+      "pets": { "whitelist": [], "blacklist": [] },
+      "year": { "min": 0, "max": "Infinity" },
+      "owner": "Bisket"
+    },
+    {
+      "rent": { "min": 0, "max": "Infinity" },
+      "gender": [],
+      "pets": { "whitelist": [], "blacklist": [] },
+      "year": { "min": 0, "max": "Infinity" },
+      "owner": "Lily"
+    },
+    {
+      "rent": { "min": 0, "max": "Infinity" },
+      "gender": [],
+      "pets": { "whitelist": [], "blacklist": [] },
+      "year": { "min": 0, "max": "Infinity" },
+      "owner": "Brandon"
+    },
+    {
+      "rent": { "min": 0, "max": "Infinity" },
+      "gender": [],
+      "pets": { "whitelist": [], "blacklist": [] },
+      "year": { "min": 0, "max": "Infinity" },
+      "owner": "Justin"
+    },
+    {
+      "rent": { "min": 0, "max": "Infinity" },
+      "gender": [],
+      "pets": { "whitelist": [], "blacklist": [] },
+      "year": { "min": 0, "max": "Infinity" },
+      "owner": "Kaleb"
+    },
+    {
+      "rent": { "min": 0, "max": "Infinity" },
+      "gender": [],
+      "pets": { "whitelist": [], "blacklist": [] },
+      "year": { "min": 0, "max": "Infinity" },
+      "owner": "Bianca"
+    },
+    {
+      "rent": { "min": 0, "max": "Infinity" },
+      "gender": [],
+      "pets": { "whitelist": [], "blacklist": [] },
+      "year": { "min": 0, "max": "Infinity" },
+      "owner": "Bob"
+    },
+    {
+      "rent": { "min": 0, "max": "Infinity" },
+      "gender": [],
+      "pets": { "whitelist": [], "blacklist": [] },
+      "year": { "min": 0, "max": "Infinity" },
+      "owner": "Anabelle"
+    },
+    {
+      "rent": { "min": 0, "max": "Infinity" },
+      "gender": [],
+      "pets": { "whitelist": [], "blacklist": [] },
+      "year": { "min": 0, "max": "Infinity" },
+      "owner": "Bella"
+    },
+    {
+      "rent": { "min": 0, "max": "Infinity" },
+      "gender": [],
+      "pets": { "whitelist": [], "blacklist": [] },
+      "year": { "min": 0, "max": "Infinity" },
+      "owner": "Roald"
+    },
+    {
+      "rent": { "min": 0, "max": "Infinity" },
+      "gender": [],
+      "pets": { "whitelist": [], "blacklist": [] },
+      "year": { "min": 0, "max": "Infinity" },
+      "owner": "Sydney"
+    },
+    {
+      "rent": { "min": 0, "max": "Infinity" },
+      "gender": [],
+      "pets": { "whitelist": [], "blacklist": [] },
+      "year": { "min": 0, "max": "Infinity" },
+      "owner": "Vanessa"
     }
   ]
 }
