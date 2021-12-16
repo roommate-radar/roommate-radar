@@ -38,9 +38,7 @@ class UserProfilePage extends React.Component {
     if (profileOwner === Meteor.user().username) {
       if (this.props.profile.socialMedia.snapchat !== '') {
         return (
-          <Menu.Item href={`https://snapchat.com/add/${this.props.profile.socialMedia.snapchat}`}>
-            <Icon inverted name='snapchat square' />
-          </Menu.Item>
+          <Menu.Item href={`https://snapchat.com/add/${this.props.profile.socialMedia.snapchat}`} icon='snapchat square' as='a' />
         );
       }
     }
