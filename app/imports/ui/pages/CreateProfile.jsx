@@ -25,6 +25,15 @@ const formSchema = new SimpleSchema({
   rent: Object,
   'rent.min': Number,
   'rent.max': Number,
+  socialMedia: Object,
+  'socialMedia.instagram': {
+    type: String,
+    optional: true,
+  },
+  'socialMedia.snapchat': {
+    type: String,
+    optional: true,
+  },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -37,7 +46,7 @@ class CreateProfile extends React.Component {
   }
 
   submit = (data) => {
-    const { firstName, lastName, image, gender, major, year, description, pets, rent } = data;
+    const { firstName, lastName, image, gender, major, year, description, pets, rent, socialMedia } = data;
     const owner = Meteor.user().username;
     Profiles.collection.insert({
       firstName,
@@ -49,6 +58,7 @@ class CreateProfile extends React.Component {
       description,
       pets,
       rent,
+      socialMedia,
       owner,
     }, (error) => {
       if (error) {
@@ -78,7 +88,7 @@ class CreateProfile extends React.Component {
     return (
       <Grid container centered id='createprofile-page'>
         <Grid.Column>
-          <Header as="h2" textAlign="center">Create Profile</Header>
+          <Header as="h2" textAlign="center" inverted>Create Profile</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)}>
             <Segment>
               <TextField name='firstName' id='createprofile-form-firstname'/>
@@ -92,6 +102,8 @@ class CreateProfile extends React.Component {
               <TextField name='pets.whitelist' unique='true'/>
               <NumField name='rent.min'/>
               <NumField name='rent.max'/>
+              <TextField name='socialMedia.instagram'/>
+              <TextField name='socialMedia.snapchat'/>
               <SubmitField value='Submit' id='createprofile-form-submit'/>
               <ErrorsField/>
             </Segment>
