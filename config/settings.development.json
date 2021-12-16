@@ -13,32 +13,32 @@
     {
       "firstName": "Holly", "lastName": "Stewart", "image": "images/Holly.jpg",
       "gender": "Female", "major":  "Physics", "year": 2022, "description" : "I'm looking for a roomie. My college roommate I shared a dorm room with during my first year of college said I was the best, so take her word for it. I could be the perfect roommate for you! I'm even open to living with college students (get out of that residence hall already!). I'm moving to New York City this summer to start a new part time job at a company. People say I'm easy to live with. I clean up after myself. I'm honest. I have a cat. I'm a fun guy. My favorite show is The Office. If we would get along, reply to my roommate-wanted ad! I can't wait to meet my new friend!", "pets": { "whitelist": ["Dog"], "blacklist": ["Cat"] },
-      "rent": { "min": 1000, "max": 2000 }, "owner": "SillySparrow"
+      "rent": { "min": 1000, "max": 2000 }, "socialMedia":  { "instagram": "SillySparrow808", "snapchat": "" }, "owner": "SillySparrow"
     },
     {
       "firstName": "Aaron", "lastName": "Baker", "image": "images/Aaron.jpg",
       "gender": "Male", "major":  "Dance", "year": 2024, "description" : "My name is Aaron. My lease is about to end and my current roommate is moving, so I'm looking for a new house and roommate. My friends would describe me as nerdy, goofy, and energetic. I'm a big fan of video games, and I enjoy watching movies. I also like going to group exercise classes such as spin classes. In high school, I was on the field hockey team. I even made the varsity team my freshman year!", "pets": { "whitelist": ["Dog", "Cat"], "blacklist": ["Mouse"] },
-      "rent": { "min": 1500, "max": 3000 }, "owner": "Thortle"
+      "rent": { "min": 1500, "max": 3000 }, "socialMedia":  { "instagram": "Thortle", "snapchat": "Thortle" }, "owner": "Thortle"
     },
     {
       "firstName": "Audrey", "lastName": "Kham", "image": "images/Audrey.jpg",
       "gender": "Female", "major":  "Math", "year": 2023, "description" : "I'm Audrey. I'm originally from Silver Spring, Maryland, but I've been living in Pittsburgh for the past four years. My friends would describe me as easy-going, sarcastic, analytical, and independent. In my free time, I like to spend my time outside, either alone or with others. On the weekends, I often head out to go to the beach, or hike. I like my house to be clean. I'm allergic to dogs, so I can't live with anyone that has a dog. However, I'm okay with living with cats.", "pets": { "whitelist": ["Cat"], "blacklist": ["Dog"] },
-      "rent": { "min": 1000, "max": 4000 }, "owner": "PhroggyChair"
+      "rent": { "min": 1000, "max": 4000 }, "socialMedia":  { "instagram": "PhroggyChair", "snapchat": "PhroggyChair" }, "owner": "PhroggyChair"
     },
     {
       "firstName": "Darius", "lastName": "Glover", "image": "images/Darius.jpg",
       "gender": "Male", "major":  "Computer Science", "year": 2025, "description" : "Hi, Darius! I'm a pretty social person, but I also need my alone time. I want my house to be a place where I can have people over, but not a place that's constantly full of people. I'm open to the idea of my roommates hosting small parties - I would just like to know about these ahead of time. I'm down to get to know each other; I'm not saying we have to be best friends, but I would like to do things like occasionally watch TV together and host cook outs for friends. If you're not open to the idea of sharing a meal together every once in a while, we're probably not a good fit.", "pets": { "whitelist": ["Dog", "Hamster"], "blacklist": ["Cat"] },
-      "rent": { "min": 0, "max": "Infinity" }, "owner": "Robbit"
+      "rent": { "min": 0, "max": "Infinity" }, "socialMedia":  { "instagram": "Robbit808", "snapchat": "Robbit" }, "owner": "Robbit"
     },
     {
       "firstName": "Alex", "lastName": "Gonzales", "image": "images/Alex.jpg",
       "gender": "Nonbinary", "major":  "Classics", "year": 2022, "description" : "Heyy! I'm Alex. I like to keep common living spaces pretty clean. I do my dishes every day and put away my belongings when I get home from work. I'm open to the idea of a cleaning schedule to keep things organized.\n\nMy monthly budget is $800, and I'm looking to move in sometime during May. I'm hoping to find a house near Frick Park in the Regent Square, Point Breeze, or Squirrel Hill neighborhoods. I would like my own bedroom, and I'm open to living with 1-3 other people. Ideally, the house would have a yard or at least a porch. If the bedrooms are sized differently enough to justify different prices, I'm happy staying in the larger or smaller room.", "pets": { "whitelist": ["Fish"], "blacklist": ["Lizard"] },
-      "rent": { "min": 500, "max": 1500 }, "owner": "Caseowary"
+      "rent": { "min": 500, "max": 1500 }, "socialMedia":  { "instagram": "", "snapchat": "Caseowary" }, "owner": "Caseowary"
     },
     {
       "firstName": "Augustine", "lastName": "Schmidt", "image": "images/Agustine.jpg",
       "gender": "Male", "major":  "Art History", "year": 2024, "description" : "I'm Augustine. Here are some quirks and relevant information: I'm sometimes overwhelmed by loud noises and can't stand cupboard doors being left open. So, if you're someone that needs to have the volume on the TV up to the maximum, we might not be the best fit. With that said, I'm not going to get upset at you for making popcorn at night or watching your favorite TV show at a normal volume. I'm not a smoker and I don't want to live with smokers. I'm sort of a beer snob. I'm not into the whole social media thing.", "pets": { "whitelist": ["Cat"], "blacklist": ["Dog"] },
-      "rent": { "min": 2500, "max": 5000 }, "owner": "Jerryfish"
+      "rent": { "min": 2500, "max": 5000 }, "socialMedia":  { "instagram": "Jerryfishlover", "snapchat": "" }, "owner": "Jerryfish"
     }
   ],
 

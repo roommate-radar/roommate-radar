@@ -28,6 +28,15 @@ class ProfilesCollection {
       rent: Object,
       'rent.min': Number,
       'rent.max': Number,
+      socialMedia: Object,
+      'socialMedia.instagram': {
+        type: String,
+        optional: true,
+      },
+      'socialMedia.snapchat': {
+        type: String,
+        optional: true,
+      },
       owner: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
