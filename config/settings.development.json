@@ -48,11 +48,11 @@
       "rent": { "min": 500, "max": 1500 }, "socialMedia":  { "instagram": "", "snapchat": "Caseowary" }, "owner": "Caseowary"
     },
     {
-<<<<<<< HEAD
       "firstName": "Augustine", "lastName": "Schmidt", "image": "images/Agustine.jpg",
       "gender": "Male", "major":  "Art History", "year": 2024, "description" : "I'm Augustine. Here are some quirks and relevant information: I'm sometimes overwhelmed by loud noises and can't stand cupboard doors being left open. So, if you're someone that needs to have the volume on the TV up to the maximum, we might not be the best fit. With that said, I'm not going to get upset at you for making popcorn at night or watching your favorite TV show at a normal volume. I'm not a smoker and I don't want to live with smokers. I'm sort of a beer snob. I'm not into the whole social media thing.", "pets": { "whitelist": ["Cat"], "blacklist": ["Dog"] },
       "rent": { "min": 2500, "max": 5000 }, "socialMedia":  { "instagram": "Jerryfishlover", "snapchat": "" }, "owner": "Jerryfish"
-=======
+    },
+    {
       "firstName": "Jerry", "lastName": "Jellyfish", "image": "https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg",
       "gender": "Male", "major":  "Art History", "year": 2024, "description" : "I’m a people-person. I love meeting new people and learning about their lives and their backgrounds. I can almost always find common ground with strangers, and I like making people feel comfortable in my presence. I find this skill is especially helpful when kicking off projects with new clients. In my previous job, my clients’ customer satisfaction scores were 15% over the company average.", "pets": { "whitelist": [], "blacklist": [] },
       "rent": { "min": 0, "max": "Infinity" }, "owner": "Jerryfish"
@@ -116,7 +116,6 @@
       "firstName": "Vanessa", "lastName": "Brown", "image": "https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg",
       "gender": "Female", "major":  "Computer Science", "year": 2024, "description" : "Hi there! My name is Vanessa Brown and I'm a computer science major. Some of my hobbies include drawing, and music. I like to keep things tidy and organized. I own two birds named Lary and Gary. If you're okay with living with the two sweetest bird please let me know! They are super sweet and aren't afraid of new people or other pets! If you do have other pets let me know so that we may try see if your pets are compatible with mine.", "pets": { "whitelist": [], "blacklist": [] },
       "rent": { "min": 0, "max": "Infinity" }, "owner": "VanessaB"
->>>>>>> issue-32
     }
   ],
 
