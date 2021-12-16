@@ -20,7 +20,7 @@ class UserProfilePage extends React.Component {
             </Link>
           </Button>
           <Button>
-            <Link to={`/delete/${this.props.profile.owner}`} id='userprofile-editprofile'>
+            <Link to={`/delete/${this.props.profile.owner}`} id='userprofile-deleteprofile'>
               Delete Profile
             </Link>
           </Button>
