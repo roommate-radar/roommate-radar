@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Container, Loader, Button, Grid, Header, Image, Icon, Menu } from 'semantic-ui-react';
+import { Container, Loader, Button, Grid, Header, Image, Menu, Icon } from 'semantic-ui-react';
 import { withRouter, Link } from 'react-router-dom';
 import { Profiles } from '../../api/profiles/Profiles';
 
@@ -13,34 +13,40 @@ class UserProfilePage extends React.Component {
     // console.log(param1);
     if (profileOwner === Meteor.user().username) {
       return (
-        <Button>
-          <Link to={`/edit/${this.props.profile.owner}`} id='userprofile-editprofile'>
-            Edit Profile
-          </Link>
-        </Button>
+        <Grid.Row column={1}>
+          <Grid.Column>
+            <Header inverted as='h2'>
+              <Button>
+                <Link to={`/edit/${this.props.profile.owner}`} id='userprofile-editprofile'>
+                  Edit Profile
+                </Link>
+              </Button>
+            </Header>
+          </Grid.Column>
+        </Grid.Row>
       );
     }
     return null;
   }
 
-  haveInstagram(profileOwner) {
-    if (profileOwner === Meteor.user().username) {
-      if (this.props.profile.socialMedia.instagram !== '') {
-        return (
-          <Menu.Item href={`https://instagram.com/${this.props.profile.socialMedia.instagram}`} icon='instagram' as='a' />
-        );
-      }
+  haveInstagram() {
+    if (this.props.profile.socialMedia.instagram) {
+      return (
+        <Menu.Item link={`https://instagram.com/${this.props.profile.socialMedia.instagram}`}>
+          <Icon name='instagram' size='big' />
+        </Menu.Item>
+      );
     }
     return null;
   }
 
-  haveSnapchat(profileOwner) {
-    if (profileOwner === Meteor.user().username) {
-      if (this.props.profile.socialMedia.snapchat !== '') {
-        return (
-          <Menu.Item href={`https://snapchat.com/add/${this.props.profile.socialMedia.snapchat}`} icon='snapchat square' as='a' />
-        );
-      }
+  haveSnapchat() {
+    if (this.props.profile.socialMedia.snapchat) {
+      return (
+        <Menu.Item href={`https://snapchat.com/add/${this.props.profile.socialMedia.snapchat}`}>
+          <Icon name='snapchat square' size='big' />
+        </Menu.Item>
+      );
     }
     return null;
   }
@@ -51,6 +57,7 @@ class UserProfilePage extends React.Component {
   }
 
   renderPage() {
+    console.log(this.props.profile);
     return (
       <Container id='userprofile-page'>
         <Grid celled column={2}>
@@ -65,8 +72,10 @@ class UserProfilePage extends React.Component {
               <Header inverted as='h3'>
                 About Me <br/><br/>
                 <div>{this.props.profile.description}</div>
-                <div>{this.haveInstagram(this.props.profile.owner)}</div>
-                <div>{this.haveSnapchat(this.props.profile.owner)}</div>
+                <Menu borderless inverted color='grey' size='large'>
+                  {this.haveInstagram(this.props.profile.owner)}
+                  {this.haveSnapchat(this.props.profile.owner)}
+                </Menu>
               </Header>
             </Grid.Column>
           </Grid.Row>
@@ -84,13 +93,7 @@ class UserProfilePage extends React.Component {
               </Header>
             </Grid.Column>
           </Grid.Row>
-          <Grid.Row column={1}>
-            <Grid.Column>
-              <Header inverted as='h2'>
-                {this.isLoggedInUser(this.props.profile.owner)}
-              </Header>
-            </Grid.Column>
-          </Grid.Row>
+          {this.isLoggedInUser(this.props.profile.owner)}
         </Grid>
       </Container>
     );
