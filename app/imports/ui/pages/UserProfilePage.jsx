@@ -47,19 +47,6 @@ class UserProfilePage extends React.Component {
     return null;
   }
 
-  haveDiscord(profileOwner) {
-    if (profileOwner === Meteor.user().username) {
-      if (this.props.profile.socialMedia.discord !== '') {
-        return (
-          <Menu.Item to={`${this.props.profile.socialMedia.discord}`}>
-            <Icon inverted name='discord' />
-          </Menu.Item>
-        );
-      }
-    }
-    return null;
-  }
-
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
@@ -82,7 +69,6 @@ class UserProfilePage extends React.Component {
                 <div>{this.props.profile.description}</div>
                 <div>{this.haveInstagram(this.props.profile.owner)}</div>
                 <div>{this.haveSnapchat(this.props.profile.owner)}</div>
-                <div>{this.haveDiscord(this.props.profile.owner)}</div>
               </Header>
             </Grid.Column>
           </Grid.Row>

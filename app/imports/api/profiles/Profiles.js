@@ -37,10 +37,6 @@ class ProfilesCollection {
         type: String,
         optional: true,
       },
-      'socialMedia.discord': {
-        type: String,
-        optional: true,
-      },
       owner: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
