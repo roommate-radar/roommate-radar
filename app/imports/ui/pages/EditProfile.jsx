@@ -92,6 +92,7 @@ class EditProfile extends React.Component {
           </AutoForm>
         </Grid.Column>
       </Grid>
+
     );
   }
 }

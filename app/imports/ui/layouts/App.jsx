@@ -13,6 +13,7 @@ import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
+import DeleteProfile from '../pages/DeleteProfile';
 import UserProfilePage from '../pages/UserProfilePage';
 import Reset from '../pages/Reset';
 import onReset from '../pages/onReset';
@@ -34,6 +35,7 @@ class App extends React.Component {
             <ProtectedRoute path="/profiles" component={ListProfile}/>
             <ProtectedRoute path="/add" component={CreateProfile}/>
             <ProtectedRoute path="/edit/:_username" component={EditProfile}/>
+            <ProtectedRoute path="/delete/:_username" component={DeleteProfile}/>
             <Route path="/profile/:_id" component={UserProfilePage}/>
             <Route component={NotFound}/>
           </Switch>

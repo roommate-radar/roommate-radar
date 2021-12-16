@@ -13,6 +13,7 @@ class UserProfilePage extends React.Component {
     // console.log(param1);
     if (profileOwner === Meteor.user().username) {
       return (
+<<<<<<< HEAD
         <Grid.Row column={1}>
           <Grid.Column>
             <Header inverted as='h2'>
@@ -46,6 +47,20 @@ class UserProfilePage extends React.Component {
         <Menu.Item href={`https://snapchat.com/add/${this.props.profile.socialMedia.snapchat}`}>
           <Icon name='snapchat square' size='big' />
         </Menu.Item>
+=======
+        <Container>
+          <Button>
+            <Link to={`/edit/${this.props.profile.owner}`} id='userprofile-editprofile'>
+              Edit Profile
+            </Link>
+          </Button>
+          <Button>
+            <Link to={`/delete/${this.props.profile.owner}`} id='userprofile-deleteprofile'>
+              Delete Profile
+            </Link>
+          </Button>
+        </Container>
+>>>>>>> issue-32
       );
     }
     return null;
