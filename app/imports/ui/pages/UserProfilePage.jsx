@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Container, Loader, Button, Grid, Header, Image } from 'semantic-ui-react';
+import { Container, Loader, Button, Grid, Header, Image, Icon, Menu } from 'semantic-ui-react';
 import { withRouter, Link } from 'react-router-dom';
 import { Profiles } from '../../api/profiles/Profiles';
 
@@ -19,6 +19,43 @@ class UserProfilePage extends React.Component {
           </Link>
         </Button>
       );
+    }
+    return null;
+  }
+
+  haveInstagram(profileOwner) {
+    if (profileOwner === Meteor.user().username) {
+      if (this.props.profile.socialMedia.instagram !== '') {
+        return (
+          <Menu.Item href={`instagram.com/${this.props.profile.socialMedia.instagram}`} icon='instagram' as='a' />
+        );
+      }
+    }
+    return null;
+  }
+
+  haveSnapchat(profileOwner) {
+    if (profileOwner === Meteor.user().username) {
+      if (this.props.profile.socialMedia.snapchat !== '') {
+        return (
+          <Menu.Item href={`snapchat.com/add/${this.props.profile.socialMedia.snapchat}`}>
+            <Icon inverted name='snapchat square' />
+          </Menu.Item>
+        );
+      }
+    }
+    return null;
+  }
+
+  haveDiscord(profileOwner) {
+    if (profileOwner === Meteor.user().username) {
+      if (this.props.profile.socialMedia.discord !== '') {
+        return (
+          <Menu.Item to={`${this.props.profile.socialMedia.discord}`}>
+            <Icon inverted name='discord' />
+          </Menu.Item>
+        );
+      }
     }
     return null;
   }
@@ -43,6 +80,9 @@ class UserProfilePage extends React.Component {
               <Header inverted as='h3'>
                 About Me <br/><br/>
                 <div>{this.props.profile.description}</div>
+                <div>{this.haveInstagram(this.props.profile.owner)}</div>
+                <div>{this.haveSnapchat(this.props.profile.owner)}</div>
+                <div>{this.haveDiscord(this.props.profile.owner)}</div>
               </Header>
             </Grid.Column>
           </Grid.Row>
