@@ -32,7 +32,7 @@ class UserProfilePage extends React.Component {
   haveInstagram() {
     if (this.props.profile.socialMedia.instagram) {
       return (
-        <Menu.Item link={`https://instagram.com/${this.props.profile.socialMedia.instagram}`}>
+        <Menu.Item href={`https://instagram.com/${this.props.profile.socialMedia.instagram}`}>
           <Icon name='instagram' size='big' />
         </Menu.Item>
       );
