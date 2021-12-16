@@ -27,7 +27,7 @@ class UserProfilePage extends React.Component {
     if (profileOwner === Meteor.user().username) {
       if (this.props.profile.socialMedia.instagram !== '') {
         return (
-          <Menu.Item href={`instagram.com/${this.props.profile.socialMedia.instagram}`} icon='instagram' as='a' />
+          <Menu.Item href={`https://instagram.com/${this.props.profile.socialMedia.instagram}`} icon='instagram' as='a' />
         );
       }
     }
@@ -38,7 +38,7 @@ class UserProfilePage extends React.Component {
     if (profileOwner === Meteor.user().username) {
       if (this.props.profile.socialMedia.snapchat !== '') {
         return (
-          <Menu.Item href={`snapchat.com/add/${this.props.profile.socialMedia.snapchat}`}>
+          <Menu.Item href={`https://snapchat.com/add/${this.props.profile.socialMedia.snapchat}`}>
             <Icon inverted name='snapchat square' />
           </Menu.Item>
         );
